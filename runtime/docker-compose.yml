@@ -1,0 +1,79 @@
+services:
+  pa-liferay:
+    hostname: pa-liferay
+    image: liferay/dxp:2024.q4.3
+    ports:
+      - 8080:8080
+    volumes:
+      - ./liferay/files:/mnt/liferay/files
+      - ./liferay/deploy:/mnt/liferay/deploy
+      - pa_liferay_data:/opt/liferay/data
+    depends_on:
+      pa-database:
+        condition: service_healthy
+      pa-elasticsearch:
+        condition: service_healthy
+    networks: 
+      - pa-network    
+
+  pa-elasticsearch:
+    hostname: pa-elasticsearch
+    build:
+      dockerfile: elasticsearch/Dockerfile
+      context: .
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+     - 9200:9200
+    volumes:
+      - pa_elasticsearch_data:/usr/share/elasticsearch/data
+    networks: 
+      - pa-network      
+    depends_on:
+      - fixsysctl
+      
+  fixsysctl:
+    restart: "no"
+    privileged: true
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          memory: 25m
+    image: centos:7
+    command: "sysctl -w vm.max_map_count=262144"
+
+  pa-database:
+    hostname: pa-database
+    image: mysql:8
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    environment:
+      MYSQL_DATABASE: lportal
+      MYSQL_USER: liferay
+      MYSQL_PASSWORD: liferay
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - 3306:3306
+    volumes:
+      - pa_database_data:/var/lib/mysql
+    cap_add:
+      - SYS_NICE
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      interval: 5s
+      timeout: 2s
+      retries: 5
+      start_period: 10s
+    networks: 
+      - pa-network      
+
+volumes:
+  pa_liferay_data:
+  pa_elasticsearch_data:
+  pa_database_data:
+
+networks:
+  pa-network:
+    name: pa-network
