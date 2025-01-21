@@ -55,5 +55,11 @@ Liferay runs on http://localhost:8080/, a developper activation key is needed to
 
 ## Credentials
 1. Liferay
+> URL : http://localhost:8080/
 > username : `test`
 > password : `admin`
+
+2. N8N
+> URL : http://localhost:5678/
+> username : `demo@inetum.com`
+> password : `Inetum2024`
