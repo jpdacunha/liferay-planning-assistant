@@ -68,11 +68,30 @@ services:
       start_period: 10s
     networks: 
       - pa-network      
-
+  pa-n8n:
+    hostname: pa-n8n
+    image: docker.n8n.io/n8nio/n8n
+    container_name: pa-n8n
+    networks:
+      - pa-network
+    restart: always
+    ports:
+      - 5678:5678
+    environment:
+      - N8N_PORT=5678
+      - N8N_PROTOCOL=http
+      - N8N_ENCRYPTION_KEY=Inetum2024
+      - NODE_ENV=production
+      - N8N_BASIC_AUTH_USER=demo@inetum.com
+      - N8N_BASIC_AUTH_PASSWORD=Inetum2024
+    volumes:
+      - pa_n8n:/home/node/.n8n
+      - ./n8n/database.sqlite:/home/node/.n8n/database.sqlite
 volumes:
   pa_liferay_data:
   pa_elasticsearch_data:
   pa_database_data:
+  pa_n8n:
 
 networks:
   pa-network:
