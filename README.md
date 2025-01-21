@@ -15,7 +15,7 @@ Copy .env-template file to customize installation regarding your environment
 
 1. Copy template
 ```bash
-cd ./liferay-dsfr
+cd ./liferay-planning-assistant
 cp -f ./.env-template ./.env
 ```
 
