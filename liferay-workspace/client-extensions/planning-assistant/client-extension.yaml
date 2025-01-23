@@ -1,0 +1,23 @@
+# This assemble block specifies which files need to be included
+#  in the client extension build artifact. In this case the batch folder
+#  contains the JSON definition of our picklists.
+assemble:
+    - from: batch
+      into: batch
+# We are defining a batch import client extension for importing
+#  our models into Liferay.
+planning-assistant:
+    name: Planning assistant Batch
+    oAuthApplicationHeadlessServer: planning-assistant-importer
+    type: batch
+# Here we declare the oAuth profile we need for importing
+#  our batch data. When this client extension deploys, this oAuth
+#  profile will be created.
+planning-assistant-importer:
+    .serviceAddress: localhost:8080
+    .serviceScheme: http
+    name: Planning Assistant Importer Application
+    scopes:
+        - Liferay.Headless.Batch.Engine.everything
+        - Liferay.Object.Admin.REST.everything
+    type: oAuthApplicationHeadlessServer
