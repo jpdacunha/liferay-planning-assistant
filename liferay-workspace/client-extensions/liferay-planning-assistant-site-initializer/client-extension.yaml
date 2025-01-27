@@ -1,0 +1,13 @@
+liferay-planning-assistant-site-initializer:
+    name: Liferay Planning Assistant Site Initializer
+    oAuthApplicationHeadlessServer: liferay-planning-assistant-site-initializer-oauth-application-headless-server
+    siteExternalReferenceCode: liferay-planning-assistant
+    siteName: Liferay Planning Assistant
+    type: siteInitializer
+liferay-planning-assistant-site-initializer-oauth-application-headless-server:
+    .serviceAddress: localhost:8080
+    .serviceScheme: http
+    name: Liferay Planning Assistant OAuth Application Headless Server
+    scopes:
+        - Liferay.Headless.Site.everything
+    type: oAuthApplicationHeadlessServer
