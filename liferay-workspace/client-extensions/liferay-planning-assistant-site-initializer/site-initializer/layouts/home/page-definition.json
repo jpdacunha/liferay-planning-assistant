@@ -77,7 +77,28 @@
                             {
                                 "definition": {
                                     "widgetInstance": {
-                                        "widgetConfig": {},
+                                        "widgetConfig": {
+                                            "displaySchedulerHeader": "true",
+                                            "showMonthView": "true",
+                                            "showAgendaView": "true",
+                                            "timeZoneId": "",
+                                            "defaultDuration": "60",
+                                            "showWeekView": "true",
+                                            "eventsPerPage": "4",
+                                            "showDayView": "true",
+                                            "rssTimeInterval": "604800000",
+                                            "defaultView": "week",
+                                            "displaySchedulerOnly": "false",
+                                            "enableRss": "true",
+                                            "rssFeedType": "atom_1.0",
+                                            "timeFormat": "locale",
+                                            "maxDaysDisplayed": "1",
+                                            "rssDelta": "20",
+                                            "rssDisplayStyle": "full-content",
+                                            "showUserEvents": "true",
+                                            "weekStartsOn": "1",
+                                            "usePortalTimeZone": "true"
+                                        },
                                         "widgetName": "com_liferay_calendar_web_portlet_CalendarPortlet"
                                     }
                                 },
