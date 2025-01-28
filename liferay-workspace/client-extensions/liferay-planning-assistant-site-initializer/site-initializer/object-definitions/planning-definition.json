@@ -218,6 +218,7 @@
     "pluralLabel": {
         "en_US": "Plannings"
     },
+    "panelCategoryKey": "control_panel.object",
     "objectFolderExternalReferenceCode": "PLANNING_ASSISTANT_OBJECT_FOLDER",
     "scope": "company"
 }
