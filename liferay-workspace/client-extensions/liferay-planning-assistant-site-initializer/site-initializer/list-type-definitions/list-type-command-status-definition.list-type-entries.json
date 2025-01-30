@@ -1,0 +1,29 @@
+[
+	{
+		"name_i18n": {
+			"en-US": "En attente"
+		},
+		"name": "En attente",
+		"type": "",
+		"key": "enAttente",
+		"externalReferenceCode": "0d218c33-38de-f36c-c927-3eb9eb1b7e8c"
+	},
+	{
+		"name_i18n": {
+			"en-US": "Planifié"
+		},
+		"name": "Planifié",
+		"type": "",
+		"key": "Planifie",
+		"externalReferenceCode": "92254c2e-b40b-f92a-dd76-4d169d7e986f"
+	},
+	{
+		"name_i18n": {
+			"en-US": "Effectué"
+		},
+		"name": "Effectué",
+		"type": "",
+		"key": "Effectue",
+		"externalReferenceCode": "000b6b8c-c40f-dd3e-cd2f-3b5f827aa7f5"
+	}
+]

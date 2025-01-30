@@ -1,0 +1,204 @@
+{
+    "label": {
+        "en_US": "Commande"
+    },
+    "name": "Commande",
+    "objectFields": [
+        {
+            "indexed": false,
+            "localized": false,
+            "objectFieldSettings": [],
+            "readOnly": "true",
+            "DBType": "String",
+            "label": {
+                "en_US": "Author"
+            },
+            "type": "String",
+            "required": false,
+            "externalReferenceCode": "33255e94-a92c-dbc2-be71-383801640f80",
+            "indexedAsKeyword": false,
+            "system": true,
+            "indexedLanguageId": "",
+            "unique": false,
+            "name": "creator",
+            "state": false,
+            "businessType": "Text",
+            "readOnlyConditionExpression": ""
+        },
+        {
+            "indexed": false,
+            "localized": false,
+            "objectFieldSettings": [],
+            "readOnly": "true",
+            "DBType": "Date",
+            "label": {
+                "en_US": "Create Date"
+            },
+            "type": "Date",
+            "required": false,
+            "externalReferenceCode": "871ac34b-af2a-f600-9793-20e185acb16e",
+            "indexedAsKeyword": false,
+            "system": true,
+            "indexedLanguageId": "",
+            "unique": false,
+            "name": "createDate",
+            "state": false,
+            "businessType": "Date",
+            "readOnlyConditionExpression": ""
+        },
+        {
+            "indexed": false,
+            "localized": false,
+            "objectFieldSettings": [],
+            "readOnly": "false",
+            "DBType": "String",
+            "label": {
+                "en_US": "External Reference Code"
+            },
+            "type": "String",
+            "required": false,
+            "externalReferenceCode": "b23d5e11-43a2-b1ad-8ad9-d9e01ab06635",
+            "indexedAsKeyword": false,
+            "system": true,
+            "indexedLanguageId": "",
+            "unique": false,
+            "name": "externalReferenceCode",
+            "state": false,
+            "businessType": "Text",
+            "readOnlyConditionExpression": ""
+        },
+        {
+            "indexed": true,
+            "localized": false,
+            "objectFieldSettings": [],
+            "readOnly": "true",
+            "DBType": "Long",
+            "label": {
+                "en_US": "ID"
+            },
+            "type": "Long",
+            "required": false,
+            "externalReferenceCode": "b4a4ed78-33be-ea36-234d-559cad9ac045",
+            "indexedAsKeyword": true,
+            "system": true,
+            "indexedLanguageId": "",
+            "unique": false,
+            "name": "id",
+            "state": false,
+            "businessType": "LongInteger",
+            "readOnlyConditionExpression": ""
+        },
+        {
+            "indexed": false,
+            "localized": false,
+            "objectFieldSettings": [],
+            "readOnly": "true",
+            "DBType": "Date",
+            "label": {
+                "en_US": "Modified Date"
+            },
+            "type": "Date",
+            "required": false,
+            "externalReferenceCode": "7b4d0871-4c56-5bb2-98e2-dee0b0d263d9",
+            "indexedAsKeyword": false,
+            "system": true,
+            "indexedLanguageId": "",
+            "unique": false,
+            "name": "modifiedDate",
+            "state": false,
+            "businessType": "Date",
+            "readOnlyConditionExpression": ""
+        },
+        {
+            "indexed": false,
+            "localized": false,
+            "objectFieldSettings": [],
+            "readOnly": "true",
+            "DBType": "String",
+            "label": {
+                "en_US": "Status"
+            },
+            "type": "String",
+            "required": false,
+            "externalReferenceCode": "5cde676a-505e-b682-e54d-64314a6f9ba8",
+            "indexedAsKeyword": false,
+            "system": true,
+            "indexedLanguageId": "",
+            "unique": false,
+            "name": "status",
+            "state": false,
+            "businessType": "Text",
+            "readOnlyConditionExpression": ""
+        },
+        {
+            "indexed": true,
+            "localized": false,
+            "objectFieldSettings": [],
+            "readOnly": "false",
+            "DBType": "Long",
+            "label": {
+                "en_US": "Volume du contenant"
+            },
+            "type": "Long",
+            "required": false,
+            "externalReferenceCode": "3a9fe7b5-64d6-4359-994d-2411d5f456bc",
+            "indexedAsKeyword": false,
+            "system": false,
+            "indexedLanguageId": "",
+            "unique": false,
+            "name": "volumeContenant",
+            "state": false,
+            "businessType": "LongInteger",
+            "readOnlyConditionExpression": ""
+        },
+        {
+            "listTypeDefinitionExternalReferenceCode": "STATUS_COMMANDE",
+            "indexed": true,
+            "localized": false,
+            "objectFieldSettings": [],
+            "readOnly": "false",
+            "DBType": "String",
+            "label": {
+                "en_US": "Etat de la commande"
+            },
+            "type": "String",
+            "required": false,
+            "externalReferenceCode": "66e9ac5c-6a3f-5f12-b6a9-68972e0b9d8c",
+            "indexedAsKeyword": false,
+            "system": false,
+            "indexedLanguageId": "en_US",
+            "unique": false,
+            "name": "etatCommande",
+            "state": false,
+            "businessType": "Picklist",
+            "readOnlyConditionExpression": ""
+        },
+        {
+            "indexed": true,
+            "localized": false,
+            "objectFieldSettings": [],
+            "readOnly": "false",
+            "DBType": "Date",
+            "label": {
+                "en_US": "Date d'intervention"
+            },
+            "type": "Date",
+            "required": false,
+            "externalReferenceCode": "2773d2ce-fb93-f02f-3e01-3f030860809f",
+            "indexedAsKeyword": false,
+            "system": false,
+            "indexedLanguageId": "",
+            "unique": false,
+            "name": "dateIntervention",
+            "state": false,
+            "businessType": "Date",
+            "readOnlyConditionExpression": ""
+        }
+    ],
+    "pluralLabel": {
+        "en_US": "Commandes"
+    },
+    "panelCategoryKey": "control_panel.object",
+    "objectFolderExternalReferenceCode": "PLANNING_ASSISTANT_OBJECT_FOLDER",
+    "scope": "company"
+}

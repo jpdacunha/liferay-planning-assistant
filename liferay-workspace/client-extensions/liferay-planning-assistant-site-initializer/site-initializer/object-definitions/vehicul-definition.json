@@ -1,0 +1,182 @@
+{
+    "label": {
+        "en_US": "Vehicule"
+    },
+    "name": "Vehicule",
+    "objectFields": [
+        {
+            "indexed": false,
+            "localized": false,
+            "objectFieldSettings": [],
+            "readOnly": "true",
+            "DBType": "String",
+            "label": {
+                "en_US": "Author"
+            },
+            "type": "String",
+            "required": false,
+            "externalReferenceCode": "bb2742a9-e826-d67e-a7e4-b2da6461a148",
+            "indexedAsKeyword": false,
+            "system": true,
+            "indexedLanguageId": "",
+            "unique": false,
+            "name": "creator",
+            "state": false,
+            "businessType": "Text",
+            "readOnlyConditionExpression": ""
+        },
+        {
+            "indexed": false,
+            "localized": false,
+            "objectFieldSettings": [],
+            "readOnly": "true",
+            "DBType": "Date",
+            "label": {
+                "en_US": "Create Date"
+            },
+            "type": "Date",
+            "required": false,
+            "externalReferenceCode": "2f7f235d-2c2b-3f21-c688-e1c77666f7e6",
+            "indexedAsKeyword": false,
+            "system": true,
+            "indexedLanguageId": "",
+            "unique": false,
+            "name": "createDate",
+            "state": false,
+            "businessType": "Date",
+            "readOnlyConditionExpression": ""
+        },
+        {
+            "indexed": false,
+            "localized": false,
+            "objectFieldSettings": [],
+            "readOnly": "false",
+            "DBType": "String",
+            "label": {
+                "en_US": "External Reference Code"
+            },
+            "type": "String",
+            "required": false,
+            "externalReferenceCode": "d41cc76d-8ba5-2e3c-0d8e-615ea753db9c",
+            "indexedAsKeyword": false,
+            "system": true,
+            "indexedLanguageId": "",
+            "unique": false,
+            "name": "externalReferenceCode",
+            "state": false,
+            "businessType": "Text",
+            "readOnlyConditionExpression": ""
+        },
+        {
+            "indexed": true,
+            "localized": false,
+            "objectFieldSettings": [],
+            "readOnly": "true",
+            "DBType": "Long",
+            "label": {
+                "en_US": "ID"
+            },
+            "type": "Long",
+            "required": false,
+            "externalReferenceCode": "68cce4ac-c031-99bc-73d3-151b96aaeed7",
+            "indexedAsKeyword": true,
+            "system": true,
+            "indexedLanguageId": "",
+            "unique": false,
+            "name": "id",
+            "state": false,
+            "businessType": "LongInteger",
+            "readOnlyConditionExpression": ""
+        },
+        {
+            "indexed": false,
+            "localized": false,
+            "objectFieldSettings": [],
+            "readOnly": "true",
+            "DBType": "Date",
+            "label": {
+                "en_US": "Modified Date"
+            },
+            "type": "Date",
+            "required": false,
+            "externalReferenceCode": "5b14a090-f84a-6777-4b78-30b65fbe9871",
+            "indexedAsKeyword": false,
+            "system": true,
+            "indexedLanguageId": "",
+            "unique": false,
+            "name": "modifiedDate",
+            "state": false,
+            "businessType": "Date",
+            "readOnlyConditionExpression": ""
+        },
+        {
+            "indexed": false,
+            "localized": false,
+            "objectFieldSettings": [],
+            "readOnly": "true",
+            "DBType": "String",
+            "label": {
+                "en_US": "Status"
+            },
+            "type": "String",
+            "required": false,
+            "externalReferenceCode": "4c52a903-14ac-d6ef-29a9-879b9f3c4d54",
+            "indexedAsKeyword": false,
+            "system": true,
+            "indexedLanguageId": "",
+            "unique": false,
+            "name": "status",
+            "state": false,
+            "businessType": "Text",
+            "readOnlyConditionExpression": ""
+        },
+        {
+            "indexed": true,
+            "localized": false,
+            "objectFieldSettings": [],
+            "readOnly": "false",
+            "DBType": "String",
+            "label": {
+                "en_US": "Immatriculation"
+            },
+            "type": "String",
+            "required": false,
+            "externalReferenceCode": "7334b1ec-9aae-8cfb-0f04-4a99d1b5953e",
+            "indexedAsKeyword": false,
+            "system": false,
+            "indexedLanguageId": "en_US",
+            "unique": false,
+            "name": "immatriculation",
+            "state": false,
+            "businessType": "Text",
+            "readOnlyConditionExpression": ""
+        },
+        {
+            "indexed": true,
+            "localized": false,
+            "objectFieldSettings": [],
+            "readOnly": "false",
+            "DBType": "Long",
+            "label": {
+                "en_US": "Volume utile"
+            },
+            "type": "Long",
+            "required": false,
+            "externalReferenceCode": "768cc0e0-f6b3-41d9-f133-53e7f82193ee",
+            "indexedAsKeyword": false,
+            "system": false,
+            "indexedLanguageId": "",
+            "unique": false,
+            "name": "volumeUtile",
+            "state": false,
+            "businessType": "LongInteger",
+            "readOnlyConditionExpression": ""
+        }
+    ],
+    "pluralLabel": {
+        "en_US": "Vehicules"
+    },
+    "panelCategoryKey": "control_panel.object",
+    "objectFolderExternalReferenceCode": "PLANNING_ASSISTANT_OBJECT_FOLDER",
+    "scope": "company"
+}

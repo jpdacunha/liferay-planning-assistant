@@ -1,0 +1,65 @@
+[
+	{
+		"name_i18n": {
+			"en-US": "Lundi"
+		},
+		"name": "Lundi",
+		"type": "",
+		"key": "Lundi",
+		"externalReferenceCode": "4057903e-0b4d-ec69-bb39-5150bfcbb7b1"
+	},
+	{
+		"name_i18n": {
+			"en-US": "Mardi"
+		},
+		"name": "Mardi",
+		"type": "",
+		"key": "Mardi",
+		"externalReferenceCode": "fde5e75e-b6fb-55eb-6567-411070276056"
+	},
+	{
+		"name_i18n": {
+			"en-US": "Mercredi"
+		},
+		"name": "Mercredi",
+		"type": "",
+		"key": "Mercredi",
+		"externalReferenceCode": "b001cb2b-fe28-7457-3100-de1dbb63f403"
+	},
+	{
+		"name_i18n": {
+			"en-US": "Jeudi"
+		},
+		"name": "Jeudi",
+		"type": "",
+		"key": "Jeudi",
+		"externalReferenceCode": "866ee9f7-9f69-6afa-9601-88b048c7d711"
+	},
+	{
+		"name_i18n": {
+			"en-US": "Vendredi"
+		},
+		"name": "Vendredi",
+		"type": "",
+		"key": "Vendredi",
+		"externalReferenceCode": "ef9a2bb0-0bf8-7e34-22c3-d6337ca7d4a3"
+	},
+	{
+		"name_i18n": {
+			"en-US": "Samedi"
+		},
+		"name": "Samedi",
+		"type": "",
+		"key": "Samedi",
+		"externalReferenceCode": "3db4f877-0247-2c50-8769-2b0105d01de6"
+	},
+	{
+		"name_i18n": {
+			"en-US": "Dimanche"
+		},
+		"name": "Dimanche",
+		"type": "",
+		"key": "Dimanche",
+		"externalReferenceCode": "b7a677d9-3a43-1c96-8218-43c6ffaae86f"
+	}
+]

@@ -1,0 +1,246 @@
+{
+    "label": {
+        "en_US": "Chauffeur"
+    },
+    "name": "Chauffeur",
+    "objectFields": [
+        {
+            "indexed": false,
+            "localized": false,
+            "objectFieldSettings": [],
+            "readOnly": "true",
+            "DBType": "String",
+            "label": {
+                "en_US": "Author"
+            },
+            "type": "String",
+            "required": false,
+            "externalReferenceCode": "0a6ae364-35e8-5b4a-bad5-b23e59940df7",
+            "indexedAsKeyword": false,
+            "system": true,
+            "indexedLanguageId": "",
+            "unique": false,
+            "name": "creator",
+            "state": false,
+            "businessType": "Text",
+            "readOnlyConditionExpression": ""
+        },
+        {
+            "indexed": false,
+            "localized": false,
+            "objectFieldSettings": [],
+            "readOnly": "true",
+            "DBType": "Date",
+            "label": {
+                "en_US": "Create Date"
+            },
+            "type": "Date",
+            "required": false,
+            "externalReferenceCode": "5af5ffcf-addf-3e2f-8ad7-6461185bce65",
+            "indexedAsKeyword": false,
+            "system": true,
+            "indexedLanguageId": "",
+            "unique": false,
+            "name": "createDate",
+            "state": false,
+            "businessType": "Date",
+            "readOnlyConditionExpression": ""
+        },
+        {
+            "indexed": false,
+            "localized": false,
+            "objectFieldSettings": [],
+            "readOnly": "false",
+            "DBType": "String",
+            "label": {
+                "en_US": "External Reference Code"
+            },
+            "type": "String",
+            "required": false,
+            "externalReferenceCode": "04a63ecc-1c61-1601-6e9e-ad9be03b8e6b",
+            "indexedAsKeyword": false,
+            "system": true,
+            "indexedLanguageId": "",
+            "unique": false,
+            "name": "externalReferenceCode",
+            "state": false,
+            "businessType": "Text",
+            "readOnlyConditionExpression": ""
+        },
+        {
+            "indexed": true,
+            "localized": false,
+            "objectFieldSettings": [],
+            "readOnly": "true",
+            "DBType": "Long",
+            "label": {
+                "en_US": "ID"
+            },
+            "type": "Long",
+            "required": false,
+            "externalReferenceCode": "538a4170-efdc-954d-1f6e-baabf78d84b6",
+            "indexedAsKeyword": true,
+            "system": true,
+            "indexedLanguageId": "",
+            "unique": false,
+            "name": "id",
+            "state": false,
+            "businessType": "LongInteger",
+            "readOnlyConditionExpression": ""
+        },
+        {
+            "indexed": false,
+            "localized": false,
+            "objectFieldSettings": [],
+            "readOnly": "true",
+            "DBType": "Date",
+            "label": {
+                "en_US": "Modified Date"
+            },
+            "type": "Date",
+            "required": false,
+            "externalReferenceCode": "7d6add1e-55df-83ff-cc50-b4e9d36ff791",
+            "indexedAsKeyword": false,
+            "system": true,
+            "indexedLanguageId": "",
+            "unique": false,
+            "name": "modifiedDate",
+            "state": false,
+            "businessType": "Date",
+            "readOnlyConditionExpression": ""
+        },
+        {
+            "indexed": false,
+            "localized": false,
+            "objectFieldSettings": [],
+            "readOnly": "true",
+            "DBType": "String",
+            "label": {
+                "en_US": "Status"
+            },
+            "type": "String",
+            "required": false,
+            "externalReferenceCode": "a9de19fa-b516-9113-383b-50ae6f0a0fdd",
+            "indexedAsKeyword": false,
+            "system": true,
+            "indexedLanguageId": "",
+            "unique": false,
+            "name": "status",
+            "state": false,
+            "businessType": "Text",
+            "readOnlyConditionExpression": ""
+        },
+        {
+            "indexed": true,
+            "localized": false,
+            "objectFieldSettings": [],
+            "readOnly": "false",
+            "DBType": "String",
+            "label": {
+                "en_US": "Nom"
+            },
+            "type": "String",
+            "required": false,
+            "externalReferenceCode": "72ef4484-52ec-f211-7b31-ea330122ce44",
+            "indexedAsKeyword": false,
+            "system": false,
+            "indexedLanguageId": "en_US",
+            "unique": false,
+            "name": "nom",
+            "state": false,
+            "businessType": "Text",
+            "readOnlyConditionExpression": ""
+        },
+        {
+            "indexed": true,
+            "localized": false,
+            "objectFieldSettings": [],
+            "readOnly": "false",
+            "DBType": "String",
+            "label": {
+                "en_US": "Prénom"
+            },
+            "type": "String",
+            "required": false,
+            "externalReferenceCode": "ea194151-3ec9-c3fb-f02e-887d1cc16deb",
+            "indexedAsKeyword": false,
+            "system": false,
+            "indexedLanguageId": "en_US",
+            "unique": false,
+            "name": "prenom",
+            "state": false,
+            "businessType": "Text",
+            "readOnlyConditionExpression": ""
+        },
+        {
+            "indexed": true,
+            "localized": false,
+            "objectFieldSettings": [],
+            "readOnly": "false",
+            "DBType": "String",
+            "label": {
+                "en_US": "Matricule"
+            },
+            "type": "String",
+            "required": false,
+            "externalReferenceCode": "94b34574-e490-ab6d-0ab0-6c747d251d64",
+            "indexedAsKeyword": false,
+            "system": false,
+            "indexedLanguageId": "en_US",
+            "unique": false,
+            "name": "matricule",
+            "state": false,
+            "businessType": "Text",
+            "readOnlyConditionExpression": ""
+        },
+        {
+            "listTypeDefinitionExternalReferenceCode": "JOURS_DE_REPOS_PICKLIST",
+            "indexed": true,
+            "localized": false,
+            "objectFieldSettings": [],
+            "readOnly": "false",
+            "DBType": "String",
+            "label": {
+                "en_US": "Jour de repos"
+            },
+            "type": "String",
+            "required": false,
+            "externalReferenceCode": "b590710b-00e6-ab70-6dc2-082befdd5149",
+            "indexedAsKeyword": false,
+            "system": false,
+            "indexedLanguageId": "en_US",
+            "unique": false,
+            "name": "jourDeRepos",
+            "state": false,
+            "businessType": "Picklist",
+            "readOnlyConditionExpression": ""
+        },
+        {
+            "indexed": true,
+            "localized": false,
+            "objectFieldSettings": [],
+            "readOnly": "false",
+            "DBType": "Long",
+            "label": {
+                "en_US": "Nombre d'heures de travail"
+            },
+            "type": "Long",
+            "required": false,
+            "externalReferenceCode": "f5f2510b-3ef8-900d-c69d-2d4d6d7d78d0",
+            "indexedAsKeyword": false,
+            "system": false,
+            "indexedLanguageId": "",
+            "unique": false,
+            "name": "heuresTravail",
+            "state": false,
+            "businessType": "LongInteger",
+            "readOnlyConditionExpression": ""
+        }
+    ],
+    "pluralLabel": {
+        "en_US": "Chauffeurs"
+    },
+    "panelCategoryKey": "control_panel.object",
+    "objectFolderExternalReferenceCode": "PLANNING_ASSISTANT_OBJECT_FOLDER",
+    "scope": "company"
+}

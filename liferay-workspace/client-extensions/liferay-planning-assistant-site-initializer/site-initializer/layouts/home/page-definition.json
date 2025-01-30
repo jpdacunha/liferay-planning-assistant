@@ -1,0 +1,122 @@
+{
+    "pageElement": {
+        "id": "d87c005d-dd46-3284-58bc-20188e7ed3b4",
+        "pageElements": [
+            {
+                "definition": {
+                    "fragmentStyle": {
+                        "paddingBottom": "6",
+                        "paddingTop": "6"
+                    },
+                    "fragmentViewports": [
+                        {
+                            "fragmentViewportStyle": {
+                                "paddingBottom": "5",
+                                "paddingTop": "5"
+                            },
+                            "id": "landscapeMobile"
+                        },
+                        {
+                            "fragmentViewportStyle": {
+                                "paddingBottom": "5",
+                                "paddingTop": "5"
+                            },
+                            "id": "portraitMobile"
+                        },
+                        {
+                            "fragmentViewportStyle": {
+                                "paddingBottom": "6",
+                                "paddingTop": "6"
+                            },
+                            "id": "tablet"
+                        }
+                    ],
+                    "indexed": true,
+                    "layout": {
+                        "paddingBottom": 6,
+                        "paddingTop": 6
+                    }
+                },
+                "id": "4763a3f1-400e-322f-1776-ff8c32239117",
+                "pageElements": [
+                    {
+                        "definition": {
+                            "fragmentStyle": {
+                                "paddingLeft": "2",
+                                "paddingRight": "2"
+                            },
+                            "fragmentViewports": [
+                                {
+                                    "fragmentViewportStyle": {
+                                        "paddingLeft": "3"
+                                    },
+                                    "id": "landscapeMobile"
+                                },
+                                {
+                                    "fragmentViewportStyle": {
+                                        "paddingLeft": "4",
+                                        "paddingRight": "4"
+                                    },
+                                    "id": "portraitMobile"
+                                },
+                                {
+                                    "fragmentViewportStyle": {
+                                        "paddingLeft": "3",
+                                        "paddingRight": "3"
+                                    },
+                                    "id": "tablet"
+                                }
+                            ],
+                            "indexed": true,
+                            "layout": {
+                                "widthType": "Fixed"
+                            }
+                        },
+                        "id": "9fbdda8b-8632-76b7-1996-c323640fa43d",
+                        "pageElements": [
+                            {
+                                "definition": {
+                                    "widgetInstance": {
+                                        "widgetConfig": {
+                                            "displaySchedulerHeader": "true",
+                                            "showMonthView": "true",
+                                            "showAgendaView": "true",
+                                            "timeZoneId": "",
+                                            "defaultDuration": "60",
+                                            "showWeekView": "true",
+                                            "eventsPerPage": "4",
+                                            "showDayView": "true",
+                                            "rssTimeInterval": "604800000",
+                                            "defaultView": "week",
+                                            "displaySchedulerOnly": "false",
+                                            "enableRss": "true",
+                                            "rssFeedType": "atom_1.0",
+                                            "timeFormat": "locale",
+                                            "maxDaysDisplayed": "1",
+                                            "rssDelta": "20",
+                                            "rssDisplayStyle": "full-content",
+                                            "showUserEvents": "true",
+                                            "weekStartsOn": "1",
+                                            "usePortalTimeZone": "true"
+                                        },
+                                        "widgetName": "com_liferay_calendar_web_portlet_CalendarPortlet"
+                                    }
+                                },
+                                "id": "c087d419-c438-3c2b-3d67-173c5be6cd76",
+                                "type": "Widget"
+                            }
+                        ],
+                        "type": "Section"
+                    }
+                ],
+                "type": "Section"
+            }
+        ],
+        "type": "Root"
+    },
+    "settings": {
+        "colorSchemeName": "01",
+        "themeName": "Classic"
+    },
+    "version": 1.1
+}

@@ -57,5 +57,5 @@ Liferay runs on http://localhost:8080/, a developper activation key is needed to
 
 | Service | URL | user | password | 
 |----------|:-------------:|:------:|:------:|
-| Liferay| http://localhost:8080/ | test | test |
+| Liferay| http://localhost:8080/ | test | admin |
 | n8n| http://localhost:5678/ | demo@inetum.com | Inetum2024 |
