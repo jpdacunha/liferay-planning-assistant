@@ -3,6 +3,7 @@
         "en_US": "Planning"
     },
     "name": "Planning",
+    "externalReferenceCode": "planning-external-ref-code",
     "objectFields": [
         {
             "indexed": false,
@@ -137,7 +138,7 @@
             "readOnly": "false",
             "DBType": "Long",
             "label": {
-                "en_US": "vehicule"
+                "en_US": "Vehicle"
             },
             "type": "Long",
             "required": false,
@@ -146,7 +147,7 @@
             "system": false,
             "indexedLanguageId": "",
             "unique": false,
-            "name": "vehicule",
+            "name": "vehicle",
             "state": false,
             "businessType": "LongInteger",
             "readOnlyConditionExpression": ""
@@ -158,7 +159,7 @@
             "readOnly": "false",
             "DBType": "Long",
             "label": {
-                "en_US": "Commande"
+                "en_US": "Command"
             },
             "type": "Long",
             "required": false,
@@ -167,7 +168,7 @@
             "system": false,
             "indexedLanguageId": "",
             "unique": false,
-            "name": "commande",
+            "name": "command",
             "state": false,
             "businessType": "LongInteger",
             "readOnlyConditionExpression": ""
@@ -179,7 +180,7 @@
             "readOnly": "false",
             "DBType": "Date",
             "label": {
-                "en_US": "Date d'intervention"
+                "en_US": "Intervention Date"
             },
             "type": "Date",
             "required": false,
@@ -188,7 +189,7 @@
             "system": false,
             "indexedLanguageId": "",
             "unique": false,
-            "name": "dateIntervention",
+            "name": "interventionDate",
             "state": false,
             "businessType": "Date",
             "readOnlyConditionExpression": ""
@@ -200,7 +201,7 @@
             "readOnly": "false",
             "DBType": "Long",
             "label": {
-                "en_US": "Ordre de passage"
+                "en_US": "Sequence of Events"
             },
             "type": "Long",
             "required": false,
@@ -209,7 +210,7 @@
             "system": false,
             "indexedLanguageId": "",
             "unique": false,
-            "name": "ordrePassage",
+            "name": "sequenceOfEvents",
             "state": false,
             "businessType": "LongInteger",
             "readOnlyConditionExpression": ""

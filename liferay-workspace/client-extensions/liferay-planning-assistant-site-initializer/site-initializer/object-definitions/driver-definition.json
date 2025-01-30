@@ -1,8 +1,9 @@
 {
     "label": {
-        "en_US": "Chauffeur"
+        "en_US": "Driver"
     },
-    "name": "Chauffeur",
+    "name": "Driver",
+    "externalReferenceCode": "driver-external-ref-code",
     "objectFields": [
         {
             "indexed": false,
@@ -158,7 +159,7 @@
             "readOnly": "false",
             "DBType": "String",
             "label": {
-                "en_US": "Prénom"
+                "en_US": "First Name"
             },
             "type": "String",
             "required": false,
@@ -167,7 +168,7 @@
             "system": false,
             "indexedLanguageId": "en_US",
             "unique": false,
-            "name": "prenom",
+            "name": "firstName",
             "state": false,
             "businessType": "Text",
             "readOnlyConditionExpression": ""
@@ -179,7 +180,7 @@
             "readOnly": "false",
             "DBType": "String",
             "label": {
-                "en_US": "Matricule"
+                "en_US": "Employee ID"
             },
             "type": "String",
             "required": false,
@@ -188,20 +189,20 @@
             "system": false,
             "indexedLanguageId": "en_US",
             "unique": false,
-            "name": "matricule",
+            "name": "employeeID",
             "state": false,
             "businessType": "Text",
             "readOnlyConditionExpression": ""
         },
         {
-            "listTypeDefinitionExternalReferenceCode": "JOURS_DE_REPOS_PICKLIST",
+            "listTypeDefinitionExternalReferenceCode": "REST_DAYS_PICKLIST",
             "indexed": true,
             "localized": false,
             "objectFieldSettings": [],
             "readOnly": "false",
             "DBType": "String",
             "label": {
-                "en_US": "Jour de repos"
+                "en_US": "Rest Days"
             },
             "type": "String",
             "required": false,
@@ -210,7 +211,7 @@
             "system": false,
             "indexedLanguageId": "en_US",
             "unique": false,
-            "name": "jourDeRepos",
+            "name": "restDays",
             "state": false,
             "businessType": "Picklist",
             "readOnlyConditionExpression": ""
@@ -222,7 +223,7 @@
             "readOnly": "false",
             "DBType": "Long",
             "label": {
-                "en_US": "Nombre d'heures de travail"
+                "en_US": "Number of Working Hours"
             },
             "type": "Long",
             "required": false,
@@ -231,14 +232,14 @@
             "system": false,
             "indexedLanguageId": "",
             "unique": false,
-            "name": "heuresTravail",
+            "name": "workingHours",
             "state": false,
             "businessType": "LongInteger",
             "readOnlyConditionExpression": ""
         }
     ],
     "pluralLabel": {
-        "en_US": "Chauffeurs"
+        "en_US": "Drivers"
     },
     "panelCategoryKey": "control_panel.object",
     "objectFolderExternalReferenceCode": "PLANNING_ASSISTANT_OBJECT_FOLDER",

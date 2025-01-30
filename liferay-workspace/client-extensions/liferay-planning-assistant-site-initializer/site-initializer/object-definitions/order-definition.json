@@ -1,8 +1,9 @@
 {
     "label": {
-        "en_US": "Commande"
+        "en_US": "Order"
     },
-    "name": "Commande",
+    "name": "Order",
+    "externalReferenceCode": "order-external-ref-code",
     "objectFields": [
         {
             "indexed": false,
@@ -137,7 +138,7 @@
             "readOnly": "false",
             "DBType": "Long",
             "label": {
-                "en_US": "Volume du contenant"
+                "en_US": "Container Volume"
             },
             "type": "Long",
             "required": false,
@@ -146,20 +147,20 @@
             "system": false,
             "indexedLanguageId": "",
             "unique": false,
-            "name": "volumeContenant",
+            "name": "containerVolume",
             "state": false,
             "businessType": "LongInteger",
             "readOnlyConditionExpression": ""
         },
         {
-            "listTypeDefinitionExternalReferenceCode": "STATUS_COMMANDE",
+            "listTypeDefinitionExternalReferenceCode": "ORDER_STATUS",
             "indexed": true,
             "localized": false,
             "objectFieldSettings": [],
             "readOnly": "false",
             "DBType": "String",
             "label": {
-                "en_US": "Etat de la commande"
+                "en_US": "Order Status"
             },
             "type": "String",
             "required": false,
@@ -168,7 +169,7 @@
             "system": false,
             "indexedLanguageId": "en_US",
             "unique": false,
-            "name": "etatCommande",
+            "name": "orderStatus",
             "state": false,
             "businessType": "Picklist",
             "readOnlyConditionExpression": ""
@@ -180,7 +181,7 @@
             "readOnly": "false",
             "DBType": "Date",
             "label": {
-                "en_US": "Date d'intervention"
+                "en_US": "Intervention Date"
             },
             "type": "Date",
             "required": false,
@@ -189,14 +190,14 @@
             "system": false,
             "indexedLanguageId": "",
             "unique": false,
-            "name": "dateIntervention",
+            "name": "interventionDate",
             "state": false,
             "businessType": "Date",
             "readOnlyConditionExpression": ""
         }
     ],
     "pluralLabel": {
-        "en_US": "Commandes"
+        "en_US": "Orders"
     },
     "panelCategoryKey": "control_panel.object",
     "objectFolderExternalReferenceCode": "PLANNING_ASSISTANT_OBJECT_FOLDER",

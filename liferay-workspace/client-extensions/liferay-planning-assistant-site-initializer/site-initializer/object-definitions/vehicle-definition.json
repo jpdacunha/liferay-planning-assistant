@@ -1,8 +1,9 @@
 {
     "label": {
-        "en_US": "Vehicule"
+        "en_US": "Vehicle"
     },
-    "name": "Vehicule",
+    "name": "Vehicle",
+    "externalReferenceCode": "vehicle-external-ref-code",
     "objectFields": [
         {
             "indexed": false,
@@ -137,7 +138,7 @@
             "readOnly": "false",
             "DBType": "String",
             "label": {
-                "en_US": "Immatriculation"
+                "en_US": "License Plate"
             },
             "type": "String",
             "required": false,
@@ -146,7 +147,7 @@
             "system": false,
             "indexedLanguageId": "en_US",
             "unique": false,
-            "name": "immatriculation",
+            "name": "licensePlate",
             "state": false,
             "businessType": "Text",
             "readOnlyConditionExpression": ""
@@ -158,7 +159,7 @@
             "readOnly": "false",
             "DBType": "Long",
             "label": {
-                "en_US": "Volume utile"
+                "en_US": "Usable Volume"
             },
             "type": "Long",
             "required": false,
@@ -167,14 +168,14 @@
             "system": false,
             "indexedLanguageId": "",
             "unique": false,
-            "name": "volumeUtile",
+            "name": "usableVolume",
             "state": false,
             "businessType": "LongInteger",
             "readOnlyConditionExpression": ""
         }
     ],
     "pluralLabel": {
-        "en_US": "Vehicules"
+        "en_US": "Vehicles"
     },
     "panelCategoryKey": "control_panel.object",
     "objectFolderExternalReferenceCode": "PLANNING_ASSISTANT_OBJECT_FOLDER",
