@@ -194,6 +194,27 @@
             "state": false,
             "businessType": "Date",
             "readOnlyConditionExpression": ""
+        },
+        {
+            "indexed": true,
+            "localized": false,
+            "objectFieldSettings": [],
+            "readOnly": "false",
+            "DBType": "String",
+            "label": {
+                "en_US": "Address"
+            },
+            "type": "String",
+            "required": false,
+            "externalReferenceCode": "17ccbe0f-77da-1c8f-5d3a-5111cc6fb0f3",
+            "indexedAsKeyword": false,
+            "system": false,
+            "indexedLanguageId": "en_US",
+            "unique": false,
+            "name": "address",
+            "state": false,
+            "businessType": "Text",
+            "readOnlyConditionExpression": ""
         }
     ],
     "pluralLabel": {
