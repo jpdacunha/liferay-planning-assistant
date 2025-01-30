@@ -1,0 +1,6 @@
+Bundle-Name: calendar-api-builder-api
+Bundle-SymbolicName: calendar.api.builder.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	calendar.api.builder.dto.v1_0,\
+	calendar.api.builder.resource.v1_0

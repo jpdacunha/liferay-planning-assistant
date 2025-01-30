@@ -1,0 +1,9 @@
+apiDir: "../calendar-api-builder-api/src/main/java"
+apiPackagePath: "calendar.api.builder"
+application:
+    baseURI: "/calendar-api"
+    className: "CalendarApiBuilderApplication"
+    name: "CalendarApiBuilder"
+author: "mohamed.hamami"
+clientDir: "../calendar-api-builder-client/src/main/java"
+testDir: "../calendar-api-builder-test/src/testIntegration/java"
