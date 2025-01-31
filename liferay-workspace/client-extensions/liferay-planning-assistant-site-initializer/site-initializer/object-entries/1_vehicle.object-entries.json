@@ -1,0 +1,35 @@
+{
+	"object-entries": [
+		{
+			"externalReferenceCode": "VEHICLE_1",
+			"licensePlate": "EK-984-MR",
+			"usableVolume": 10,
+			"objectEntrySiteInitializerKey": "objectEntrySiteInitializerKey-6"
+		},
+		{
+			"externalReferenceCode": "VEHICLE_2",
+			"licensePlate": "MG-116-TH",
+			"usableVolume": 8,
+			"objectEntrySiteInitializerKey": "objectEntrySiteInitializerKey-7"
+		},
+		{
+			"externalReferenceCode": "VEHICLE_3",
+			"licensePlate": "PO-608-MR",
+			"usableVolume": 10,
+			"objectEntrySiteInitializerKey": "objectEntrySiteInitializerKey-8"
+		},
+		{
+			"externalReferenceCode": "VEHICLE_4",
+			"licensePlate": "JE-624-FL",
+			"usableVolume": 12,
+			"objectEntrySiteInitializerKey": "objectEntrySiteInitializerKey-9"
+		},
+		{
+			"externalReferenceCode": "VEHICLE_5",
+			"licensePlate": "IC-042-PF",
+			"usableVolume": 15,
+			"objectEntrySiteInitializerKey": "objectEntrySiteInitializerKey-10"
+		}
+	],
+	"objectDefinitionName": "Vehicle"
+}

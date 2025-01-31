@@ -138,7 +138,7 @@
             "readOnly": "false",
             "DBType": "String",
             "label": {
-                "en_US": "Nom"
+                "en_US": "Last Name"
             },
             "type": "String",
             "required": false,
@@ -147,7 +147,7 @@
             "system": false,
             "indexedLanguageId": "en_US",
             "unique": false,
-            "name": "nom",
+            "name": "lastName",
             "state": false,
             "businessType": "Text",
             "readOnlyConditionExpression": ""

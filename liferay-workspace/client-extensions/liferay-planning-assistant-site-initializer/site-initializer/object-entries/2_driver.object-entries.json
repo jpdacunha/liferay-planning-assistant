@@ -1,0 +1,50 @@
+{
+	"object-entries": [
+		{
+			"externalReferenceCode": "DRIVER_1",
+			"employeeID": "PE439",
+			"firstName": "John",
+			"lastName": "Doe",
+			"restDays": "sunday",
+			"workingHours": "6",
+			"objectEntrySiteInitializerKey": "objectEntrySiteInitializerKey-11"
+		},
+		{
+			"externalReferenceCode": "DRIVER_2",
+			"employeeID": "PE440",
+			"firstName": "Jane",
+			"lastName": "Smith",
+			"restDays": "monday",
+			"workingHours": "8",
+			"objectEntrySiteInitializerKey": "objectEntrySiteInitializerKey-12"
+		},
+		{
+			"externalReferenceCode": "DRIVER_3",
+			"employeeID": "PE441",
+			"firstName": "Alice",
+			"lastName": "Johnson",
+			"restDays": "tuesday",
+			"workingHours": "7",
+			"objectEntrySiteInitializerKey": "objectEntrySiteInitializerKey-13"
+		},
+		{
+			"externalReferenceCode": "DRIVER_4",
+			"employeeID": "PE442",
+			"firstName": "Bob",
+			"lastName": "Brown",
+			"restDays": "wednesday",
+			"workingHours": "6",
+			"objectEntrySiteInitializerKey": "objectEntrySiteInitializerKey-14"
+		},
+		{
+			"externalReferenceCode": "DRIVER_5",
+			"employeeID": "PE443",
+			"firstName": "Charlie",
+			"lastName": "Davis",
+			"restDays": "thursday",
+			"workingHours": "9",
+			"objectEntrySiteInitializerKey": "objectEntrySiteInitializerKey-15"
+		}
+	],
+	"objectDefinitionName": "Driver"
+}
