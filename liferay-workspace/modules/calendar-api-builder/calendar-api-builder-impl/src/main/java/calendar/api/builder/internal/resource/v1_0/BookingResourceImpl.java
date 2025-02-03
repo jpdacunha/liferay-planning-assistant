@@ -69,28 +69,28 @@ public class BookingResourceImpl extends BaseBookingResourceImpl {
 	@Override
 	public Response addBooking(Booking booking) throws Exception {
 		
-		addCalendarBooking(booking.getVehicleId(), booking.getOrderId(), booking.getDateOrder(), booking.getStartTime(),
-				booking.getEndTime());
+		addCalendarBooking(booking);
 		return super.addBooking(booking);
 	}
 
-	private void addCalendarBooking(long vehicleId, long OrderId, String commandeDate, String startTime, String endTime)
+	private void addCalendarBooking(Booking booking)
 			throws Exception {
 		ServiceContext serviceContext = ServiceContextThreadLocal.getServiceContext();
 		
 		Map<Locale, String> titleMap = new HashMap<>();
-		titleMap.put(LocaleUtil.getSiteDefault(),Long.toString(OrderId));
+		titleMap.put(LocaleUtil.getSiteDefault(),Long.toString(booking.getOrderId()));
 		Map<Locale, String> descriptionMap = new HashMap<>();
+		descriptionMap.put(LocaleUtil.getSiteDefault(),booking.getOrderAdress());
 		String location = null;
 		long[] reminders = { 0, 0 };
 		String[] remindersType = { "email", "email" };
 		java.util.Calendar startTimeJCalendar = java.util.Calendar.getInstance();
 		java.util.Calendar endTimeJCalendar = java.util.Calendar.getInstance();
-		startTimeJCalendar.setTime(dateFormat.parse(commandeDate + " " + startTime));
-		endTimeJCalendar.setTime(dateFormat.parse(commandeDate + " " + endTime));
+		startTimeJCalendar.setTime(dateFormat.parse(booking.getDateOrder() + " " + booking.getStartTime()));
+		endTimeJCalendar.setTime(dateFormat.parse(booking.getDateOrder() + " " + booking.getEndTime()));
 		long[] childCalendarIds = {};
 
-		_calendarBookingService.addCalendarBooking(vehicleId, // calendarId
+		_calendarBookingService.addCalendarBooking(booking.getVehicleId(), // calendarId
 				childCalendarIds, // childCalendarIds
 				CalendarBookingConstants.PARENT_CALENDAR_BOOKING_ID_DEFAULT,
 				CalendarBookingConstants.RECURRING_CALENDAR_BOOKING_ID_DEFAULT, titleMap, descriptionMap, location,

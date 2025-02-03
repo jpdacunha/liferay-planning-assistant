@@ -172,6 +172,46 @@
             "state": false,
             "businessType": "LongInteger",
             "readOnlyConditionExpression": ""
+        }, {
+            "indexed": true,
+            "localized": false,
+            "objectFieldSettings": [],
+            "readOnly": "false",
+            "DBType": "String",
+            "label": {
+                "en_US": "Brand"
+            },
+            "type": "String",
+            "required": false,
+            "externalReferenceCode": "1eb9ec61-c9a3-dad9-6647-60ea285fba4c",
+            "indexedAsKeyword": false,
+            "system": false,
+            "indexedLanguageId": "en_US",
+            "unique": false,
+            "name": "brand",
+            "state": false,
+            "businessType": "Text",
+            "readOnlyConditionExpression": ""
+        }, {
+            "indexed": true,
+            "localized": false,
+            "objectFieldSettings": [],
+            "readOnly": "false",
+            "DBType": "String",
+            "label": {
+                "en_US": "Model"
+            },
+            "type": "String",
+            "required": false,
+            "externalReferenceCode": "07390617-908a-7f65-8129-b9887822d3b5",
+            "indexedAsKeyword": false,
+            "system": false,
+            "indexedLanguageId": "en_US",
+            "unique": false,
+            "name": "model",
+            "state": false,
+            "businessType": "Text",
+            "readOnlyConditionExpression": ""
         }
     ],
     "pluralLabel": {
