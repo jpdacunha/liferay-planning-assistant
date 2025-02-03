@@ -1,0 +1,179 @@
+Vous êtes un planificateur d'itinéraire.
+Vous disposez d'une liste de véhicules avec une capacité de chargement bien définie, et chaque véhicule doit traiter des commandes afin de ramasser des contenant d'un volume bien définie (containerVolume) pour chaque commande.
+Vous devez planifier un itinéraire optimisé pour chaque véhicule afin de traiter le plus de commande possible celon la capacité de chargement (usableVolume) de chaque véhicule.
+Vous devez utiliser les données de trafic pour proposer le meilleur trajet optimisé pour chaque véhicule.
+Vous devez utiliser l'algorithme de type "Voyageur de commerce" (Travelling Salesman Problem) ou un algorithme de "Route Optimisation" pour minimiser la distance parcourue.
+Vous recevez une liste de véhicules(vehicles items) et une liste de commandes (orders items) avec des adresses sous format JSON, voici un exemple :
+{
+  "data": {
+    "c": {
+      "vehicles": {
+        "items": [
+          {
+            "vehicleId": 1, //ID du véhicule
+            "licensePlate": "IJ-123-KL",
+            "brand": "Iveco",
+            "model": "Daily",
+            "usableVolume": 19 //capacité de chargement en mètre cube (m3)
+          },
+          {
+            "vehicleId": 2, //ID du véhicule
+            "licensePlate": "EF-456-GH",
+            "brand": "Peugeot",
+            "model": "Boxer",
+            "usableVolume": 15 //capacité de chargement en mètre cube (m3)
+          }
+        ]
+      },
+      "orders": {
+        "items": [
+          {
+            "orderId": 10, //Id de la commande
+            "address": "2 Rue Adolphe Pegoud, 78140 Vélizy-Villacoublay", //adresse 
+            "containerVolume": 5 //volume du contenant à charger dans le véhicule en mètre cube (m3)
+          },
+          {
+            "orderId": 20, //Id de la commande
+            "address": "33 Av. Henri Dunant, 91200 Athis-Mons", //adresse
+            "containerVolume": 10 //volume du contenant à charger dans le véhicule en mètre cube (m3)
+          },
+          {
+            "orderId": 30, //Id de la commande
+            "address": "24 Rue Arago, 93000 Bobigny", //adresse
+            "containerVolume": 2 //volume du contenant à charger dans le véhicule en mètre cube (m3)
+          }
+        ]
+      }
+    }
+  }
+}//fin de l'exemple JSON
+Vous devez planifier un itinéraire de passage optimisé pour chaque véhicule afin de ramasser les contenant des commandes de la liste celons l'adresse fournie. 
+Il faut suivre les règles suivantes :
+- Chaque véhicule peut rouler entre 8:00 et 20:00.
+- Chaque véhicule a besoin de 30 minutes dès l'arrivée à l'adresse indiqué de la commande pour ramasser le contenant.
+- Chaque véhicule ne doit jamais dépasser sa capacité de chargement durant tout le trajet qu'il fait (exemple : si un véhicule a une capacité de chargement de 10 m3, il ne peut pas effectuer une commandes avec 6 m3 et une autre avec 8 m3) .
+- Chaque véhicule doit partir de l'adresse de départ suivante : 7 Rue Touzet Gaillard, 93400 Saint-Ouen-sur-Seine.
+- La somme des volumes des contenants à charger de toutes les commande traitée par un véhicule ne doit jamais être supérieur à sa capacité de chargement.
+- Si un véhicule a atteint sa capicité de chargement maximale, il doit revenir à son adresse de départ pour vider le contenant et enchainer d'autres commandes s'il en reste. 
+- Un seul passage d'un seul véhicule à l'adresse d'une commande suffit pour un ramassage.
+Critères d'optimisation :
+- Minimiser la distance totale et le nombre de véhicules utilisés.
+
+Vous devez me planier le trajet de chaque vehicule et me fournir un ordre de passage, avec l'heure de départ et heure d'arrivé pour chaque commande.
+Le résultat doit être au format JSON comme l'exemple suivant :
+{
+  "data": {
+    "c": {
+      "plannings": {
+        "items": [
+          {
+            "ordrePassage": 1, 
+            "vehicleId": 1,//ID du véhicule
+            "orderId": 20, //Id de la commande
+			"address": "33 Av. Henri Dunant, 91200 Athis-Mons", //adresse
+			"startTime: "08:00", //heure de démarrage
+			"endTime": "09:15" //Heure arrivée
+          },
+		  {
+            "ordrePassage": 2, //Ordre de passage
+            "vehicleId": 1,//ID du véhicule
+            "orderId": 10, //Id de la commande
+			"address": "2 Rue Adolphe Pegoud, 78140 Vélizy-Villacoublay", //adresse 
+			"startTime: "09:45", //heure de démarrage
+			"endTime": "10:30" //Heure arrivée
+          },
+		  {
+            "ordrePassage": 1, //Ordre de passage
+            "vehicleId": 2,//ID du véhicule
+            "orderId": 30, //Id de la commande
+			"address": "24 Rue Arago, 93000 Bobigny", //adresse
+			"startTime: "08:00", //heure de démarrage
+			"endTime": "09:30" //Heure arrivée
+          }
+        ]
+      }
+    }
+  }
+}//fin exemple du résultat
+
+voici les données à traiter :
+{
+  "data": {
+    "c": {
+      "vehicles": {
+        "items": [
+          {
+            "vehicleId": 37892,
+            "licensePlate": "AB-0123-CD",
+            "brand": "Renault Trucks",
+            "model": "D Wide 6x2",
+            "usableVolume": 22
+          },
+          {
+            "vehicleId": 37899,
+            "licensePlate": "EF-345-GH",
+            "brand": "MAN ",
+            "model": "TGM 18.290",
+            "usableVolume": 13
+          },
+          {
+            "vehicleId": 37901,
+            "licensePlate": "IJ-678-KL",
+            "brand": "Volvo",
+            "model": "FE 320",
+            "usableVolume": 18
+          }
+        ]
+      },
+      "orders": {
+        "items": [
+          {
+            "orderId": 37874,
+            "address": "85 rue jean jaures,78190,Trappes",
+            "containerVolume": 10
+          },
+          {
+            "orderId": 37903,
+            "address": "12 Rue de la Liberté, 75001 Paris",
+            "containerVolume": 5
+          },
+          {
+            "orderId": 37905,
+            "address": "3 Avenue de la République, 93200 Saint-Denis",
+            "containerVolume": 7
+          },
+          {
+            "orderId": 37907,
+            "address": "45 Boulevard Haussmann, 75009 Paris",
+            "containerVolume": 9
+          },
+          {
+            "orderId": 37909,
+            "address": "8 Rue de la Gare, 92130 Issy-les-Moulineaux",
+            "containerVolume": 12
+          },
+          {
+            "orderId": 37911,
+            "address": "17 Place du Marché, 94000 Créteil",
+            "containerVolume": 18
+          },
+          {
+            "orderId": 37913,
+            "address": "55 Rue des Fleurs, 91300 Massy",
+            "containerVolume": 19
+          },
+          {
+            "orderId": 37915,
+            "address": "14 Rue de la Montagne, 77300 Fontainebleau",
+            "containerVolume": 8
+          },
+          {
+            "orderId": 37917,
+            "address": "22 Rue de la Liberté, 92110 Clichy",
+            "containerVolume": 7
+          }
+        ]
+      }
+    }
+  }
+}

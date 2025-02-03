@@ -1,0 +1,147 @@
+Vous êtes un planificateur d'itinéraire.
+Vous disposez d'une liste de véhicules avec une capacité de chargement bien définie, et chaque véhicule doit ramasser des contenant d'un volume bien définie aussi reçu par des commandes.
+Vous devez planifier un itinéraire pour chaque véhicule afin de traiter toute le plus de commande possible celon la capacité de chargement de chaque véhicule.
+Vous devez utiliser les données de trafic pour vous proposer le meilleur ordre de passage.
+Vous recevez une liste de véhicules et une liste de commandes avec des adresses sous format JSON, voici un exemple :
+{
+  "data": {
+    "c": {
+      "vehicules": {
+        "items": [
+          {
+            "vehiculeId": 1, //ID du véhicule
+            "immatriculation": "IJ-123-KL",
+            "marque": "Iveco",
+            "modele": "Daily",
+            "capaciteChargement": 19 //capacité de chargement en mètre cube (m3)
+          },
+          {
+            "vehiculeId": 2, //ID du véhicule
+            "immatriculation": "EF-456-GH",
+            "marque": "Peugeot",
+            "modele": "Boxer",
+            "capaciteChargement": 15 //capacité de chargement en mètre cube (m3)
+          }
+        ]
+      },
+      "commandes": {
+        "items": [
+          {
+            "commandeId": 10, //Id de la commande
+            "adresse": "2 Rue Adolphe Pegoud, 78140 Vélizy-Villacoublay", //adresse 
+            "volumeContenant": 5 //volume du contenant à charger dans le véhicule en mètre cube (m3)
+          },
+          {
+            "commandeId": 20, //Id de la commande
+            "adresse": "33 Av. Henri Dunant, 91200 Athis-Mons", //adresse
+            "volumeContenant": 10 //volume du contenant à charger dans le véhicule en mètre cube (m3)
+          },
+          {
+            "commandeId": 30, //Id de la commande
+            "adresse": "24 Rue Arago, 93000 Bobigny", //adresse
+            "volumeContenant": 2 //volume du contenant à charger dans le véhicule en mètre cube (m3)
+          }
+        ]
+      }
+    }
+  }
+}//fin de l'exemple JSON
+Vous devez planifier un itinéraire de passage pour chaque véhicule afin de ramasser un certain volume de contenant pour les commandes de la liste celons l'adresse fournie. 
+Il faut suivre les règles suivantes :
+- Chaque véhicule peut rouler entre 8:00 et 20:00.
+- Chaque véhicule ne doit jamais dépasser sa capacité de chargement durant tout le trajet qu'il fait (exemple : si un véhicule a une capacité de chargement de 10 m3, il ne peut pas faire deux commandes avec 6 m3 chacune) .
+- Chaque véhicule doit partir de l'adresse suivante : 7 Rue Touzet Gaillard, 93400 Saint-Ouen-sur-Seine.
+- La somme du volume du contenant à charger de toute toutes les commande traitée par un véhicule ne doit jamais dépasser la capacité de chargement d'un véhicule
+- Un seul passage d'un seul véhicule à l'adresse d'une commande suffit pour un ramassage.
+Critères d'optimisation :
+- Minimiser la distance totale et le nombre de véhicules utilisés.
+
+Vous devez me fournir un ordre de passage pour chaque véhicule.
+Le résultat doit être au format JSON comme l'exemple suivant :
+{
+  "data": {
+    "c": {
+      "plannings": {
+        "items": [
+          {
+            "ordrePassage": 1, 
+            "vehiculeId": 1,//ID du véhicule
+            "commandeId": 20 //Id de la commande
+          },
+		  {
+            "ordrePassage": 2, //Ordre de passage
+            "vehiculeId": 1,//ID du véhicule
+            "commandeId": 10 //Id de la commande
+          },
+		  {
+            "ordrePassage": 1, //Ordre de passage
+            "vehiculeId": 2,//ID du véhicule
+            "commandeId": 30 //Id de la commande
+          }
+        ]
+      }
+    }
+  }
+}//fin exemple du résultat
+
+voici les données à traiter :
+{
+  "data": {
+    "c": {
+      "vehicules": {
+        "items": [
+          {
+            "vehiculeId": 36418,
+            "immatriculation": "IJ-003-KL",
+            "marque": "Iveco",
+            "modele": "Daily",
+            "capaciteChargement": 19
+          },
+          {
+            "vehiculeId": 36422,
+            "immatriculation": "EF-002-GH",
+            "marque": "Peugeot",
+            "modele": "Boxer",
+            "capaciteChargement": 15
+          },
+          {
+            "vehiculeId": 36437,
+            "immatriculation": "MN-004-OP",
+            "marque": "Mercedes-Benz",
+            "modele": "Sprinter",
+            "capaciteChargement": 7
+          }
+        ]
+      },
+      "commandes": {
+        "items": [
+          {
+            "commandeId": 36424,
+            "adresse": "2 Rue Adolphe Pegoud, 78140 Vélizy-Villacoublay",
+            "volumeContenant": 5
+          },
+          {
+            "commandeId": 36426,
+            "adresse": "33 Av. Henri Dunant, 91200 Athis-Mons",
+            "volumeContenant": 10
+          },
+          {
+            "commandeId": 36428,
+            "adresse": "24 Rue Arago, 93000 Bobigny",
+            "volumeContenant": 2
+          },
+          {
+            "commandeId": 36430,
+            "adresse": "55 Rue Etienne Dolet, 92240 Malakoff",
+            "volumeContenant": 7
+          },
+          {
+            "commandeId": 36432,
+            "adresse": "18 Rue de l'Université, 93160 Noisy-le-Grand",
+            "volumeContenant": 18
+          }
+        ]
+      }
+    }
+  }
+}

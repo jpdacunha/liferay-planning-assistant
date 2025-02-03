@@ -1,0 +1,62 @@
+{
+  "data": {
+    "c": {
+      "vehicules": {
+        "items": [
+          {
+            "vehiculeId": 36418,
+            "immatriculation": "IJ-003-KL",
+            "marque": "Iveco",
+            "modele": "Daily",
+            "capaciteChargement": 19
+          },
+          {
+            "vehiculeId": 36422,
+            "immatriculation": "EF-002-GH",
+            "marque": "Peugeot",
+            "modele": "Boxer",
+            "capaciteChargement": 15
+          },
+          {
+            "vehiculeId": 36437,
+            "immatriculation": "MN-004-OP",
+            "marque": "Mercedes-Benz",
+            "modele": "Sprinter",
+            "capaciteChargement": 7
+          }
+        ]
+      },
+      "commandes": {
+        "items": [
+          {
+            "commandeId": 36424,
+            "adresse": "2 Rue Adolphe Pegoud, 78140 Vélizy-Villacoublay",
+            "volumeContenant": 5
+          },
+          {
+            "commandeId": 36426,
+            "adresse": "33 Av. Henri Dunant, 91200 Athis-Mons",
+            "volumeContenant": 10
+          },
+          {
+            "commandeId": 36428,
+            "adresse": "24 Rue Arago, 93000 Bobigny",
+            "volumeContenant": 2
+          },
+          {
+            "commandeId": 36430,
+            "adresse": "55 Rue Etienne Dolet, 92240 Malakoff",
+            "volumeContenant": 7
+          },
+          {
+            "commandeId": 36432,
+            "adresse": "18 Rue de l'Université, 93160 Noisy-le-Grand",
+            "volumeContenant": 18
+          }
+        ]
+      }
+    }
+  }
+}
+
+

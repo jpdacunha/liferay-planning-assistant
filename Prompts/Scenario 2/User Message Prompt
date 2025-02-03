@@ -1,0 +1,80 @@
+{
+  "data": {
+    "c": {
+      "vehicles": {
+        "items": [
+          {
+            "vehicleId": 37892,
+            "licensePlate": "AB-0123-CD",
+            "brand": "Renault Trucks",
+            "model": "D Wide 6x2",
+            "usableVolume": 22
+          },
+          {
+            "vehicleId": 37899,
+            "licensePlate": "EF-345-GH",
+            "brand": "MAN ",
+            "model": "TGM 18.290",
+            "usableVolume": 13
+          },
+          {
+            "vehicleId": 37901,
+            "licensePlate": "IJ-678-KL",
+            "brand": "Volvo",
+            "model": "FE 320",
+            "usableVolume": 18
+          }
+        ]
+      },
+      "orders": {
+        "items": [
+          {
+            "orderId": 37874,
+            "address": "85 rue jean jaures,78190,Trappes",
+            "containerVolume": 10
+          },
+          {
+            "orderId": 37903,
+            "address": "12 Rue de la Liberté, 75001 Paris",
+            "containerVolume": 5
+          },
+          {
+            "orderId": 37905,
+            "address": "3 Avenue de la République, 93200 Saint-Denis",
+            "containerVolume": 7
+          },
+          {
+            "orderId": 37907,
+            "address": "45 Boulevard Haussmann, 75009 Paris",
+            "containerVolume": 9
+          },
+          {
+            "orderId": 37909,
+            "address": "8 Rue de la Gare, 92130 Issy-les-Moulineaux",
+            "containerVolume": 12
+          },
+          {
+            "orderId": 37911,
+            "address": "17 Place du Marché, 94000 Créteil",
+            "containerVolume": 18
+          },
+          {
+            "orderId": 37913,
+            "address": "55 Rue des Fleurs, 91300 Massy",
+            "containerVolume": 19
+          },
+          {
+            "orderId": 37915,
+            "address": "14 Rue de la Montagne, 77300 Fontainebleau",
+            "containerVolume": 8
+          },
+          {
+            "orderId": 37917,
+            "address": "22 Rue de la Liberté, 92110 Clichy",
+            "containerVolume": 7
+          }
+        ]
+      }
+    }
+  }
+}
