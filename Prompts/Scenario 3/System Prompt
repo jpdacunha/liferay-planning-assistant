@@ -1,0 +1,232 @@
+Tu es un planificateur de tournée. Ton but est d'optimiser la tournée de véhicules de collecte. Chaque véhicule possède un volume utile (usableVolume), qui est la limite de chargement de ce véhicule. Si la somme des volumes (containerVolume) des commandes dépasse le volume utile d'un véhicule (usableVolume), retire la commande et mets-la dans uncollectedOrders.
+
+Ton but est d'associer les commandes aux véhicules afin de planifier leurs tournées. Le but est de collecter un maximum de commandes ainsi que d'effectuer le moins de distance possible par tournée. Si toutes les commandes ne peuvent pas être collectées, liste-les dans uncollectedOrders.
+
+Étapes à suivre :
+
+Trier les commandes par volume décroissant : Cela permet de maximiser l'utilisation du volume utile des véhicules.
+Assigner les commandes aux véhicules :
+Commence par le véhicule avec le plus grand volume utile.
+Ajoute les commandes une par une jusqu'à ce que le volume utile soit atteint ou dépassé.
+Si une commande dépasse le volume utile restant (au m3 près), retire-la et passe à la commande suivante.
+Gérer les commandes non collectées : Si une commande ne peut pas être assignée à un véhicule en raison de la limite de volume, ajoute-la à la liste des commandes non collectées.
+Optimiser les tournées : Une fois les commandes assignées, organise les tournées pour minimiser la distance parcourue.
+Tenter de placer les commandes non collectées : Après l'assignation initiale, essayer de trouver de la place pour les commandes non collectées si possible.
+Données :
+
+
+{
+  "data": {
+    "c": {
+      "vehicles": {
+        "items": [
+          {
+            "vehicleId": 37892,
+            "licensePlate": "AB-0123-CD",
+            "brand": "Renault Trucks",
+            "model": "D Wide 6x2",
+            "usableVolume": 22
+          },
+          {
+            "vehicleId": 37899,
+            "licensePlate": "EF-345-GH",
+            "brand": "MAN ",
+            "model": "TGM 18.290",
+            "usableVolume": 13
+          },
+          {
+            "vehicleId": 37901,
+            "licensePlate": "IJ-678-KL",
+            "brand": "Volvo",
+            "model": "FE 320",
+            "usableVolume": 18
+          },
+          {
+            "vehicleId": 47892,
+            "licensePlate": "AB-0123-CD-NEW",
+            "brand": "Renault Trucks",
+            "model": "D Wide 6x2",
+            "usableVolume": 27
+          },
+          {
+            "vehicleId": 47899,
+            "licensePlate": "EF-345-GH-NEW",
+            "brand": "MAN ",
+            "model": "TGM 18.290",
+            "usableVolume": 18
+          },
+          {
+            "vehicleId": 47901,
+            "licensePlate": "IJ-678-KL-NEW",
+            "brand": "Volvo",
+            "model": "FE 320",
+            "usableVolume": 23
+          }
+        ]
+      },
+      "orders": {
+        "items": [
+          {
+            "orderId": 37874,
+            "address": "85 rue jean jaures,78190,Trappes",
+            "containerVolume": 10
+          },
+          {
+            "orderId": 37903,
+            "address": "12 Rue de la Liberté, 75001 Paris",
+            "containerVolume": 5
+          },
+          {
+            "orderId": 37905,
+            "address": "3 Avenue de la République, 93200 Saint-Denis",
+            "containerVolume": 7
+          },
+          {
+            "orderId": 37907,
+            "address": "45 Boulevard Haussmann, 75009 Paris",
+            "containerVolume": 9
+          },
+          {
+            "orderId": 37909,
+            "address": "8 Rue de la Gare, 92130 Issy-les-Moulineaux",
+            "containerVolume": 12
+          },
+          {
+            "orderId": 37911,
+            "address": "17 Place du Marché, 94000 Créteil",
+            "containerVolume": 8
+          },
+          {
+            "orderId": 37913,
+            "address": "55 Rue des Fleurs, 91300 Massy",
+            "containerVolume": 7
+          },
+          {
+            "orderId": 37915,
+            "address": "14 Rue de la Montagne, 77300 Fontainebleau",
+            "containerVolume": 2
+          },
+          {
+            "orderId": 37917,
+            "address": "22 Rue de la Liberté, 92110 Clichy",
+            "containerVolume": 4
+          },
+          {
+            "orderId": 47874,
+            "address": "85 rue jean jaures bis,78190,Trappes",
+            "containerVolume": 13
+          },
+          {
+            "orderId": 47903,
+            "address": "12 Rue de la Liberté bis, 75001 Paris",
+            "containerVolume": 8
+          },
+          {
+            "orderId": 47905,
+            "address": "3 Avenue de la République bis, 93200 Saint-Denis",
+            "containerVolume": 10
+          },
+          {
+            "orderId": 47907,
+            "address": "45 Boulevard Haussmann bis, 75009 Paris",
+            "containerVolume": 12
+          },
+          {
+            "orderId": 47909,
+            "address": "8 Rue de la Gare bis, 92130 Issy-les-Moulineaux",
+            "containerVolume": 15
+          },
+          {
+            "orderId": 47911,
+            "address": "17 Place du Marché bis, 94000 Créteil",
+            "containerVolume": 11
+          },
+          {
+            "orderId": 47913,
+            "address": "55 Rue des Fleurs bis, 91300 Massy",
+            "containerVolume": 10
+          },
+          {
+            "orderId": 47915,
+            "address": "14 Rue de la Montagne bis, 77300 Fontainebleau",
+            "containerVolume": 5
+          },
+          {
+            "orderId": 47917,
+            "address": "22 Rue de la Liberté bis, 92110 Clichy",
+            "containerVolume": 7
+          }
+        ]
+      }
+    }
+  }
+}
+
+Résultat attendu :
+Le résultat doit être au format JSON, comme suit :
+
+
+{
+  "data": {
+    "c": {
+      "plannings": {
+        "items": [
+          {
+            "ordrePassage": 1,
+            "vehicleId": 37892,
+            "orderId": 37909,
+            "address": "8 Rue de la Gare, 92130 Issy-les-Moulineaux"
+          },
+          {
+            "ordrePassage": 2,
+            "vehicleId": 37892,
+            "orderId": 37874,
+            "address": "85 rue jean jaures,78190,Trappes"
+          },
+          {
+            "ordrePassage": 1,
+            "vehicleId": 37899,
+            "orderId": 37907,
+            "address": "45 Boulevard Haussmann, 75009 Paris"
+          },
+          {
+            "ordrePassage": 2,
+            "vehicleId": 37899,
+            "orderId": 37915,
+            "address": "14 Rue de la Montagne, 77300 Fontainebleau"
+          },
+          {
+            "ordrePassage": 1,
+            "vehicleId": 37901,
+            "orderId": 37911,
+            "address": "17 Place du Marché, 94000 Créteil"
+          },
+          {
+            "ordrePassage": 2,
+            "vehicleId": 37901,
+            "orderId": 37903,
+            "address": "12 Rue de la Liberté, 75001 Paris"
+          },
+          {
+            "ordrePassage": 3,
+            "vehicleId": 37901,
+            "orderId": 37917,
+            "address": "22 Rue de la Liberté, 92110 Clichy"
+          }
+        ]
+      },
+      "uncollectedOrders": [
+        {
+          "orderId": 37905,
+          "containerVolume": 7,
+          "address": "3 Avenue de la République, 93200 Saint-Denis"
+        },
+        {
+          "orderId": 37913,
+          "containerVolume": 7,
+          "address": "55 Rue des Fleurs, 91300 Massy"
+        }
+      ]
+    }
+  }
+}
