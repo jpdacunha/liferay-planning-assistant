@@ -1,0 +1,36 @@
+{
+  "vehicles": [
+      {
+          "vehicleId": 47892,
+          "usableVolume": 27,
+          "orders": [
+              {
+                  "orderId": 47909,
+                  "address": "8 Rue de la Gare bis, 92130 Issy-les-Moulineaux",
+                  "containerVolume": 15
+              },
+              {
+                  "orderId": 37874,
+                  "address": "85 rue jean jaures bis,78190,Trappes",
+                  "containerVolume": 12
+              }
+          ]
+      },
+      {
+          "vehicleId": 47899,
+          "usableVolume": 18,
+          "orders": [
+              {
+                  "orderId": 47907,
+                  "address": "45 Boulevard Haussmann bis, 75009 Paris",
+                  "containerVolume": 12
+              },
+              {
+                  "orderId": 37909,
+                  "address": "8 Rue de la Gare, 92130 Issy-les-Moulineaux",
+                  "containerVolume": 6
+              }
+          ]
+      }
+  ]
+}
