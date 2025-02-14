@@ -75,3 +75,8 @@ List the tasks that still need to be completed.
 Successfully use tools with AI to associate commands with vehicles based on distance and available volume without errors.
 Ensure the AI accurately matches commands to the appropriate vehicles.
 Test and validate the AI integration to ensure reliability and accuracy.
+
+> There are several workflows in n8n, the current one is: "AI: Conversational agent with personalized tool for optimized planning"
+- [ ] Look at the warshall algorithm
+
+
