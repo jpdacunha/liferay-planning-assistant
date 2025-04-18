@@ -1,0 +1,114 @@
+{
+  "name": "AI: Conversational agent with custom tool written in JavaScript",
+  "nodes": [
+    {
+      "parameters": {
+        "name": "text_convertor",
+        "description": "Call this tool to convert the incoming query and return it",
+        "jsCode": "// Example: convert the incoming query to uppercase and return it\nreturn \"#debut conversion# \"+query+\" #END conversion#\""
+      },
+      "id": "424805bb-c940-4957-abf0-7463745636ce",
+      "name": "Code Tool",
+      "type": "@n8n/n8n-nodes-langchain.toolCode",
+      "position": [
+        860,
+        540
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "6f661ce1-dd64-4bbb-a41c-0bf643c48961",
+      "name": "On new manual Chat Message",
+      "type": "@n8n/n8n-nodes-langchain.manualChatTrigger",
+      "position": [
+        480,
+        300
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "options": {
+          "humanMessage": "TOOLS\n------\nAssistant can ask the user to use tools to look up information that may be helpful in answering the users original question. The tools the human can use are:\n\n{tools}\n{format_instructions}\n\n\nUSER'S INPUT\n--------------------\n{{input}}",
+          "systemMessage": "You must convert the input text using the \"text_convertor\" tool and display his response.\nYou must display only the response from the \"text_convertor\" tool and nothing else, don't add any comments."
+        }
+      },
+      "id": "a8d4a7bf-9754-483d-b75a-35132287e31d",
+      "name": "Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "position": [
+        740,
+        300
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "options": {
+          "temperature": 0.1
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatMistralCloud",
+      "typeVersion": 1,
+      "position": [
+        680,
+        520
+      ],
+      "id": "db8e5fc8-ad21-4376-b857-cada1f730f6e",
+      "name": "Mistral Cloud Chat Model",
+      "credentials": {
+        "mistralCloudApi": {
+          "id": "UPkcMCztWMkEfvHM",
+          "name": "Mistral Cloud account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Code Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On new manual Chat Message": {
+      "main": [
+        [
+          {
+            "node": "Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mistral Cloud Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {},
+  "versionId": "f0b34cb7-e9cd-4a23-a188-1256f0083d1c",
+  "meta": {
+    "templateId": "1963",
+    "templateCredsSetupCompleted": true,
+    "instanceId": "cde6fc33ca7fb7aeb2d39a997843312f14c44be3d19949ae548906c553eee938"
+  },
+  "id": "5SAlzfiLqlNJXsgm",
+  "tags": []
+}

@@ -1,0 +1,138 @@
+{
+  "name": "AI: Conversational agent with custom tool to optimize planning",
+  "nodes": [
+    {
+      "parameters": {
+        "name": "jsonSortByVolume",
+        "description": "Call this tool to sort the incoming query by volume and return it",
+        "jsCode": "// Example: sort the incoming query by volume and return it\n\nconst ordersData = JSON.parse(query);\nconst orders = ordersData.data.c.orders.items;\n\nreturn JSON.stringify(orders.sort((a, b) => b.containerVolume - a.containerVolume));\n"
+      },
+      "id": "027eee66-ffd4-4a93-879a-b463b3f90593",
+      "name": "Code Tool",
+      "type": "@n8n/n8n-nodes-langchain.toolCode",
+      "position": [
+        800,
+        560
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "13d8fb8b-fe42-42d5-aaf3-d1e26e033835",
+      "name": "On new manual Chat Message",
+      "type": "@n8n/n8n-nodes-langchain.manualChatTrigger",
+      "position": [
+        480,
+        300
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "options": {
+          "humanMessage": "TOOLS\n------\nAssistant can ask the user to use tools to look up information that may be helpful in answering the users original question. The tools the human can use are:\n\n{tools}\n{format_instructions}\n\nSteps to follow:\n\nFirst, you must use the tool \"jsonSortByVolume\" to sort orders by decreasing volume : This helps to maximize the use of the vehicles' usable volume.\nAfter, assign orders to vehicles:\nStart with the vehicle with the largest usable volume.\nAdd orders one by one until the usable volume is reached or exceeded.\nIf an order exceeds the remaining usable volume, remove it and move to the next order.\nManage uncollected orders: If an order cannot be assigned to a vehicle due to volume limits, add it to the list of uncollected orders.\nAttempt to place uncollected orders: After the initial assignment, try to find space for uncollected orders if possible.\nThe order of visits is done by vehicle.\n\nUSER'S INPUT\n--------------------\n{{input}}",
+          "systemMessage": "You are a route planner. Your goal is to optimize the routes for collection vehicles. Each vehicle has a usable volume (usableVolume), which is the loading limit for that vehicle. If the sum of the volumes (containerVolume) of the orders exceeds the usable volume of a vehicle (usableVolume), remove the order and place it in uncollectedOrders.\n\nYour goal is to assign orders to vehicles to plan their routes. The aim is to collect as many orders as possible and to travel the shortest distance per route. If not all orders can be collected, list them in uncollectedOrders.\n"
+        }
+      },
+      "id": "f1c33fdf-19b5-46cb-89e4-82826266d77d",
+      "name": "Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "position": [
+        740,
+        300
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "options": {
+          "temperature": 0.1
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatMistralCloud",
+      "typeVersion": 1,
+      "position": [
+        600,
+        560
+      ],
+      "id": "450107df-32d7-4e15-acb5-894e89bd1702",
+      "name": "Mistral Cloud Chat Model",
+      "credentials": {
+        "mistralCloudApi": {
+          "id": "UPkcMCztWMkEfvHM",
+          "name": "Mistral Cloud account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n  \"vehicles\": [\n      {\n          \"vehicleId\": 47892,\n          \"usableVolume\": 27,\n          \"orders\": [\n              {\n                  \"orderId\": 47909,\n                  \"address\": \"8 Rue de la Gare bis, 92130 Issy-les-Moulineaux\",\n                  \"containerVolume\": 15\n              },\n              {\n                  \"orderId\": 37874,\n                  \"address\": \"85 rue jean jaures bis,78190,Trappes\",\n                  \"containerVolume\": 12\n              }\n          ]\n      },\n      {\n          \"vehicleId\": 47899,\n          \"usableVolume\": 18,\n          \"orders\": [\n              {\n                  \"orderId\": 47907,\n                  \"address\": \"45 Boulevard Haussmann bis, 75009 Paris\",\n                  \"containerVolume\": 12\n              },\n              {\n                  \"orderId\": 37909,\n                  \"address\": \"8 Rue de la Gare, 92130 Issy-les-Moulineaux\",\n                  \"containerVolume\": 6\n              }\n          ]\n      }\n  ]\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.2,
+      "position": [
+        1040,
+        560
+      ],
+      "id": "f93b82da-2bbd-4e19-b6d9-9ab498bd5828",
+      "name": "Structured Output Parser"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Code Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On new manual Chat Message": {
+      "main": [
+        [
+          {
+            "node": "Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mistral Cloud Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Agent",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {},
+  "versionId": "520b7565-f040-4793-aa08-b2b028b43107",
+  "meta": {
+    "templateId": "1963",
+    "templateCredsSetupCompleted": true,
+    "instanceId": "cde6fc33ca7fb7aeb2d39a997843312f14c44be3d19949ae548906c553eee938"
+  },
+  "id": "AkedfiX6QpYsmVfs",
+  "tags": []
+}

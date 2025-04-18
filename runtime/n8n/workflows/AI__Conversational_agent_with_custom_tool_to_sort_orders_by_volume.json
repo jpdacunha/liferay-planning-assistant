@@ -1,0 +1,130 @@
+{
+  "name": "AI: Conversational agent with custom tool to sort orders by volume",
+  "nodes": [
+    {
+      "parameters": {
+        "name": "jsonSortByVolume",
+        "description": "Call this tool to sort the incoming query by volume and return it",
+        "jsCode": "// Example: sort the incoming query by volume and return it\n\nconst ordersData = JSON.parse(query);\nconst orders = ordersData.data.c.orders.items;\n\nreturn JSON.stringify(orders.sort((a, b) => b.containerVolume - a.containerVolume));\n"
+      },
+      "id": "339d24d0-1303-4692-b313-663077050b09",
+      "name": "Code Tool",
+      "type": "@n8n/n8n-nodes-langchain.toolCode",
+      "position": [
+        900,
+        520
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "b6192f04-fe44-4ee6-bdee-7e076d794fe7",
+      "name": "On new manual Chat Message",
+      "type": "@n8n/n8n-nodes-langchain.manualChatTrigger",
+      "position": [
+        480,
+        300
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "options": {
+          "humanMessage": "TOOLS\n------\nAssistant can ask the user to use tools to look up information that may be helpful in answering the users original question. The tools the human can use are:\n\n{tools}\n{format_instructions}\n\n\nUSER'S INPUT\n--------------------\n{{input}}",
+          "systemMessage": "You must sort the input json using the \"jsonSortByVolume\" tool and display his response.\nYou must display only the response from the \"jsonSortByVolume\" tool as a formated JSON, don't add any comments."
+        }
+      },
+      "id": "06ec4f4e-c6a0-4572-9799-7659dbdd985d",
+      "name": "Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "position": [
+        740,
+        300
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "options": {
+          "temperature": 0.1
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatMistralCloud",
+      "typeVersion": 1,
+      "position": [
+        680,
+        520
+      ],
+      "id": "186c9877-f3b5-4e62-a0d6-e3217055867e",
+      "name": "Mistral Cloud Chat Model",
+      "credentials": {
+        "mistralCloudApi": {
+          "id": "UPkcMCztWMkEfvHM",
+          "name": "Mistral Cloud account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.2,
+      "position": [
+        1240,
+        520
+      ],
+      "id": "a0a15690-4922-43d2-bec2-df1ba73e43d7",
+      "name": "Structured Output Parser"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Code Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On new manual Chat Message": {
+      "main": [
+        [
+          {
+            "node": "Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mistral Cloud Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        []
+      ]
+    }
+  },
+  "active": false,
+  "settings": {},
+  "versionId": "a59988ef-2f91-4153-ac09-e7e14d369135",
+  "meta": {
+    "templateId": "1963",
+    "templateCredsSetupCompleted": true,
+    "instanceId": "cde6fc33ca7fb7aeb2d39a997843312f14c44be3d19949ae548906c553eee938"
+  },
+  "id": "PgQvrJX3eC4t4Lw9",
+  "tags": []
+}

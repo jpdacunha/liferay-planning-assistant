@@ -1,0 +1,154 @@
+{
+  "name": "Planning Assistant 2",
+  "nodes": [
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://pa-liferay:8080/o/graphql",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBasicAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "query",
+              "value": "{    c{       vehicules{         items {           vehiculeId           immatriculation           marque           modele           capaciteChargement         }       },       commandes{       \titems{           commandeId           adresse           volumeContenant         }       }   }   }"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -320,
+        -40
+      ],
+      "id": "b6a3a2b3-831e-4832-948f-9888affc9dee",
+      "name": "Get Commandes and Vehicules",
+      "credentials": {
+        "httpBasicAuth": {
+          "id": "epZKbA2I05bT7aTD",
+          "name": "Liferay Basic Auth"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.data }}",
+        "hasOutputParser": true,
+        "messages": {
+          "messageValues": [
+            {
+              "message": "Vous êtes un plannificateur d'itinéraire.\nVous devez utiliser les données de trafic pour vous proposer le meilleur ordre de passage.\nVous recevez une liste de véhicules et une liste de commandes avec des adresses sous format JSON, voici un exemple :\n{\n  \"data\": {\n    \"c\": {\n      \"vehicules\": {\n        \"items\": [\n          {\n            \"vehiculeId\": 1, //ID du véhicule\n            \"immatriculation\": \"IJ-123-KL\",\n            \"marque\": \"Iveco\",\n            \"modele\": \"Daily\",\n            \"capaciteChargement\": 19 //capacité de chargement en metre cube (m3)\n          },\n          {\n            \"vehiculeId\": 2, //ID du véhicule\n            \"immatriculation\": \"EF-456-GH\",\n            \"marque\": \"Peugeot\",\n            \"modele\": \"Boxer\",\n            \"capaciteChargement\": 15 //capacité de chargement en metre cube (m3)\n          }\n        ]\n      },\n      \"commandes\": {\n        \"items\": [\n          {\n            \"commandeId\": 10, //Id de la commande\n            \"adresse\": \"2 Rue Adolphe Pegoud, 78140 Vélizy-Villacoublay\", //adresse \n            \"volumeContenant\": 5 //volume du contenant à ramasser par le véhicule en metre cube (m3)\n          },\n          {\n            \"commandeId\": 20, //Id de la commande\n            \"adresse\": \"33 Av. Henri Dunant, 91200 Athis-Mons\", //adresse\n            \"volumeContenant\": 10 //volume du contenant à ramasser par le véhicule en metre cube (m3)\n          },\n          {\n            \"commandeId\": 30, //Id de la commande\n            \"adresse\": \"24 Rue Arago, 93000 Bobigny\", //adresse\n            \"volumeContenant\": 2 //volume du contenant à ramasser par le véhicule en metre cube (m3)\n          }\n        ]\n      }\n    }\n  }\n}//fin de l'exemple JSON\nVous devez planifier un itinéraire de passage pour chaque véhicule afin de ramasser un certain volume de contenant \npour les commandes de la liste celon l'adresse fournie. \nIl faut suivre les règles suivantes :\n- Chaque véhicule peut rouler entre 8:00 et 20:00.\n- Chaque véhicule possède une capacité de chargement à ne pas dépasser tout au long de sont trajet.\n- Chaque véhicule doit partir de l'adresse suivante : 7 Rue Touzet Gaillard, 93400 Saint-Ouen-sur-Seine.\n- Un seul passage d'un seul véhicule à l'adresse d'une commande suffit pour un ramassage.\nCritères d'optimisation :\n- Minimiser la distance totale et le nombre de véhicules utilisés.\n\nVous devez me fournir un ordre de passage pour chaque véhicule.\nLe résultat doit être au format JSON comme l'exemple suivant :\n{\n  \"data\": {\n    \"c\": {\n      \"plannings\": {\n        \"items\": [\n          {\n            \"ordrePassage\": 1, \n            \"vehiculeId\": 1,//ID du véhicule\n            \"commandeId\": 20 //Id de la commande\n          },\n\t\t  {\n            \"ordrePassage\": 2, //Ordre de passage\n            \"vehiculeId\": 1,//ID du véhicule\n            \"commandeId\": 10 //Id de la commande\n          },\n\t\t  {\n            \"ordrePassage\": 1, //Ordre de passage\n            \"vehiculeId\": 2,//ID du véhicule\n            \"commandeId\": 30 //Id de la commande\n          }\n        ]\n      }\n    }\n  }\n}//fin exemple du résultat\n"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        -100,
+        -40
+      ],
+      "id": "36489579-e468-4559-a1c1-38425383412f",
+      "name": "Basic LLM Chain"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatMistralCloud",
+      "typeVersion": 1,
+      "position": [
+        -100,
+        160
+      ],
+      "id": "399fbd1c-6bdc-4cbb-89a3-e0056c57b2fb",
+      "name": "Mistral Cloud Chat Model",
+      "credentials": {
+        "mistralCloudApi": {
+          "id": "UPkcMCztWMkEfvHM",
+          "name": "Mistral Cloud account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n  \"data\": {\n    \"c\": {\n      \"plannings\": {\n        \"items\": [\n          {\n            \"ordrePassage\": 1,\n            \"vehiculeId\": 36422,\n            \"commandeId\": 36428\n          },\n          {\n            \"ordrePassage\": 2,\n            \"vehiculeId\": 36422,\n            \"commandeId\": 36430\n          }\n        ]\n      }\n    }\n  }\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.2,
+      "position": [
+        80,
+        180
+      ],
+      "id": "cadaf807-8269-455d-898e-339c8bcda52c",
+      "name": "Structured Output Parser"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "8a27cb55-c030-4275-b9fb-7a458de08cbb",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -500,
+        -40
+      ],
+      "id": "89989384-0121-4fdb-a710-93f88c278e57",
+      "name": "Webhook",
+      "webhookId": "8a27cb55-c030-4275-b9fb-7a458de08cbb"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Get Commandes and Vehicules": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mistral Cloud Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "92f3fc11-49b7-45b9-a6dd-9b23059c876b",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "cde6fc33ca7fb7aeb2d39a997843312f14c44be3d19949ae548906c553eee938"
+  },
+  "id": "A6j7D3AEueidE9Rv",
+  "tags": []
+}

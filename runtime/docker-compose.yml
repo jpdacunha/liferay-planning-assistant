@@ -84,9 +84,12 @@ services:
       - NODE_ENV=production
       - N8N_BASIC_AUTH_USER=demo@inetum.com
       - N8N_BASIC_AUTH_PASSWORD=Inetum2024
+      - N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
     volumes:
-      - pa_n8n:/home/node/.n8n
-      - ./n8n/database.sqlite:/home/node/.n8n/database.sqlite
+      - pa_n8n:/home/node/.n8n 
+      - ./n8n/workflows:/home/node/.n8n/workflows
+      - ./n8n/import-json.sh:/home/node/.n8n/import-json.sh
+    
 volumes:
   pa_liferay_data:
   pa_elasticsearch_data:
