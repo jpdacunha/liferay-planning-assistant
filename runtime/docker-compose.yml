@@ -13,8 +13,8 @@ services:
         condition: service_healthy
       pa-elasticsearch:
         condition: service_healthy
-    networks: 
-      - pa-network    
+    networks:
+      - pa-network
 
   pa-elasticsearch:
     hostname: pa-elasticsearch
@@ -26,14 +26,14 @@ services:
         soft: -1
         hard: -1
     ports:
-     - 9200:9200
+      - 9200:9200
     volumes:
       - pa_elasticsearch_data:/usr/share/elasticsearch/data
-    networks: 
-      - pa-network      
+    networks:
+      - pa-network
     depends_on:
       - fixsysctl
-      
+
   fixsysctl:
     restart: "no"
     privileged: true
@@ -61,13 +61,13 @@ services:
     cap_add:
       - SYS_NICE
     healthcheck:
-      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
       interval: 5s
       timeout: 2s
       retries: 5
       start_period: 10s
-    networks: 
-      - pa-network      
+    networks:
+      - pa-network
   pa-n8n:
     hostname: pa-n8n
     image: docker.n8n.io/n8nio/n8n
@@ -85,16 +85,25 @@ services:
       - N8N_BASIC_AUTH_USER=demo@inetum.com
       - N8N_BASIC_AUTH_PASSWORD=Inetum2024
       - N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
+      - QUEUE_HEALTH_CHECK_ACTIVE=true
+      - N8N_RUNNERS_ENABLED=true
     volumes:
-      - pa_n8n:/home/node/.n8n 
-      - ./n8n/workflows:/home/node/.n8n/workflows
-      - ./n8n/import-json.sh:/home/node/.n8n/import-json.sh
-    
+      - pa_n8n:/home/node/.n8n
+      - ./n8n/import:/home/node/import
+    post_start:
+      - command: /home/node/import/import-json.sh
+        privileged: true
+    healthcheck:
+      test: [ "CMD-SHELL", "/usr/bin/wget --server-response --proxy off --no-verbose --tries=1 --timeout=3 127.0.0.1:5678/healthz -O /dev/null 2>&1 | grep -q 'HTTP/1.1 200 OK'" ]
+      interval: 20s
+      retries: 3
+
 volumes:
   pa_liferay_data:
   pa_elasticsearch_data:
   pa_database_data:
   pa_n8n:
+
 
 networks:
   pa-network:
