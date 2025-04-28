@@ -68,6 +68,11 @@ Liferay runs on http://localhost:8080/, a developper activation key is needed to
 | Liferay| http://localhost:8080/ | test | admin |
 | n8n| http://localhost:5678/ | demo@inetum.com | Inetum2024 |
 
+## N8N
+To work with the n8n workflow you will need 2 credentials : 
+- Mistral Cloud Account
+- Google Calendar Account (https://docs.n8n.io/integrations/builtin/credentials/google/oauth-single-service/?utm_source=n8n_app&utm_medium=credential_settings&utm_campaign=create_new_credentials_modal)
+
 ## To-Do List
 List the tasks that still need to be completed.
 
