@@ -1,0 +1,292 @@
+{
+  "name": "AI Booking Liferay Calendar",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "fc7c8318-71e4-4b3f-bb6a-f6c20275337e",
+      "name": "When chat message received",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "position": [
+        -100,
+        -20
+      ],
+      "webhookId": "5308edc9-738b-4aae-a789-214e2392579a",
+      "typeVersion": 1.1
+    },
+    {
+      "parameters": {},
+      "id": "11b1847f-40af-4551-a0b1-f5dd45ca2708",
+      "name": "Window Buffer Memory",
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "position": [
+        700,
+        760
+      ],
+      "typeVersion": 1.3
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.chatInput }}",
+        "options": {
+          "systemMessage": "=You are a Google Calendar assistant.\nYour primary goal is to assist the user in managing their calendar effectively using two tools: Event Creation and Event Retrieval. Always base your responses on the current date: \n{{ DateTime.local().toFormat('cccc d LLLL yyyy') }}.\nGeneral Guidelines:\nIf the user's initial message is vague (e.g., \"hello\" or a generic greeting) or does not specify a request, explain your capabilities clearly:\nExample: \"Hello! I can help you manage your Google Calendar. You can ask me to create an event or retrieve event data. What would you like me to do?\"\nIf the user specifies a request in their first message, begin preparing to use the appropriate tool:\nFor event creation, gather necessary details like start date, end date, title, and description.\nFor event retrieval, ask for the date range or time period they want to query.\nTool: Event Creation\nWhen asked to create an event:\n\nRequest the start and end dates/times from the user.\nDate format: DD/MM/YYYY\nCollect the following information:\nstart_date: Exact start date and time of the event.\nend_date: Exact end date and time of the event.\nTool: Event Retrieval\nWhen asked to retrieve events:\n\nAsk for the date range or period they are interested in. Examples:\nFor \"last week,\" retrieve events from Monday of the previous week to Friday of the same week.\nFor \"today,\" use the current date.\nFormat the date range:\nstart_date: Start date and time in DD/MM/YYYY.\nend_date: End date and time in DD/MM/YYYY.\nKey Behaviors:\nClarity: Provide a clear and helpful introduction when the user's request is unclear.\nValidation: Confirm details with the user before finalizing actions.\nAdaptation: Handle varying levels of detail in requests (e.g., \"Add a meeting for next Monday morning\" or \"Retrieve my events for this weekend\").\nProactivity: Offer suggestions to fill in missing details or clarify ambiguous inputs.\nLanguage Matching: Ensure all interactions, including event titles, descriptions, and messages, are in the user's language to provide a seamless experience."
+        }
+      },
+      "id": "c02625e8-16d3-452d-8367-f470ffc02e68",
+      "name": "Calendar AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "position": [
+        760,
+        -20
+      ],
+      "typeVersion": 1.7
+    },
+    {
+      "parameters": {
+        "model": "mistral-small-latest",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatMistralCloud",
+      "typeVersion": 1,
+      "position": [
+        260,
+        600
+      ],
+      "id": "46f1cdbf-327e-4a4f-98c1-c37b73f55aef",
+      "name": "Mistral Cloud Chat Model",
+      "credentials": {
+        "mistralCloudApi": {
+          "id": "SIsdVGqhC0wRmoef",
+          "name": "Mistral Cloud account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "toolDescription": "Use this tool when you’re asked to retrieve events data.",
+        "url": "http://pa-liferay:8080/o/calendar-api-builder/v1.0/bookings",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBasicAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "orderDate",
+              "value": "={{ $fromAI('orderDate', ``, 'string') }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "x-csrf-token",
+              "value": "MkRyo6zK"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequestTool",
+      "typeVersion": 4.2,
+      "position": [
+        1020,
+        380
+      ],
+      "id": "401f09d3-9df0-49e4-a0f1-5477d2c3b83a",
+      "name": "Get Bookings",
+      "credentials": {
+        "httpBasicAuth": {
+          "id": "eXUS5SkbxVS3z9Sh",
+          "name": "Liferay credential"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "toolDescription": "Use this tool when you’re asked to retrieve events data.",
+        "url": "http://pa-liferay:8080/o/calendar-api-builder/v1.0/bookings",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBasicAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "orderDate",
+              "value": "={{ $fromAI('orderDate', ``, 'string') }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "x-csrf-token",
+              "value": "MkRyo6zK"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequestTool",
+      "typeVersion": 4.2,
+      "position": [
+        1620,
+        740
+      ],
+      "id": "a291e8de-f4fe-4d02-abaf-f3647124095d",
+      "name": "Get Bookings1",
+      "credentials": {
+        "httpBasicAuth": {
+          "id": "eXUS5SkbxVS3z9Sh",
+          "name": "Liferay credential"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "toolDescription": "Use this Google Calendar tool when you are asked to create an event.",
+        "method": "POST",
+        "url": "http://pa-liferay:8080/o/calendar-api-builder/v1.0/add-booking",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBasicAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "x-csrf-token",
+              "value": "MkRyo6zK"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "dateOrder",
+              "value": "={{ $fromAI('dateOrder', ``, 'string') }}"
+            },
+            {
+              "name": "endTime",
+              "value": "={{ $fromAI('endTime', ``, 'string') }}"
+            },
+            {
+              "name": "orderAdress",
+              "value": "test"
+            },
+            {
+              "name": "orderId",
+              "value": "257245311"
+            },
+            {
+              "name": "startTime",
+              "value": "={{ $fromAI('startTime', ``, 'string') }}"
+            },
+            {
+              "name": "vehicleId",
+              "value": "33125"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequestTool",
+      "typeVersion": 4.2,
+      "position": [
+        1240,
+        400
+      ],
+      "id": "80905811-3390-40e6-bfed-fbde1ff35b5e",
+      "name": "Add Booking",
+      "credentials": {
+        "httpBasicAuth": {
+          "id": "eXUS5SkbxVS3z9Sh",
+          "name": "Liferay credential"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Calendar AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Window Buffer Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "Calendar AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mistral Cloud Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Calendar AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Bookings": {
+      "ai_tool": [
+        [
+          {
+            "node": "Calendar AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add Booking": {
+      "ai_tool": [
+        [
+          {
+            "node": "Calendar AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "3f493d01-f869-4e03-acbc-d3b35ef1bb6a",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "cde6fc33ca7fb7aeb2d39a997843312f14c44be3d19949ae548906c553eee938"
+  },
+  "id": "qLrzdVVqhpBT1fHs",
+  "tags": []
+}
