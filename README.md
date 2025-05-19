@@ -70,7 +70,7 @@ Liferay runs on http://localhost:8080/, a developper activation key is needed to
 
 ## N8N
 To work with the n8n workflow you will need 2 credentials : 
-- Mistral Cloud Account
+- Mistral Cloud Account (https://console.mistral.ai/api-keys)
 - Google Calendar Account (https://docs.n8n.io/integrations/builtin/credentials/google/oauth-single-service/?utm_source=n8n_app&utm_medium=credential_settings&utm_campaign=create_new_credentials_modal)
 
 ## To-Do List
